@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerClothing : MonoBehaviour
+public class PlayerEquipment : MonoBehaviour
 {
     [SerializeField] Image headSlot;
 
