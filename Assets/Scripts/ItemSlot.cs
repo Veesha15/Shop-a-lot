@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System;
 
 public class ItemSlot : MonoBehaviour, IPointerClickHandler
-{
-    private enum SlotType
+{ 
+    private enum SlotType // controls what happens when you interact with slot
     {
         Equipt,
         Buy,
@@ -14,14 +15,19 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         Inventory
     }
 
+    [SerializeField] private Image itemImage;
+
+    [Header("Assign in Scene")]
     [SerializeField] private SlotType slotType; // can select in inspector or via code
-    // scriptable object
-    private Image itemImage;
+    public ItemObject item;
+    
+    public static event Action<ItemSlot> EquipEvent;
 
-
-    private void Awake()
+   
+    // ***** DEFAULT METHODS *****
+    private void Start()
     {
-        itemImage = GetComponent<Image>();
+        itemImage.sprite = item.icon;
     }
 
 
@@ -33,15 +39,14 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    // ***** CUSTOM METHODS *****
     private void InteractWithSlot()
     {
         switch (slotType)
         {
             case SlotType.Inventory:
                 print("Inventory");
-                // call equip event
-                // check bodypart
-                // swop scriptable item
+                EquipEvent?.Invoke(this);
                 break;
 
             case SlotType.Equipt:
@@ -66,6 +71,19 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
 
         }
+    }
+
+    public void ReceiveItem(ItemObject _receivedItem)
+    {
+        item = _receivedItem;
+        itemImage.sprite = _receivedItem.icon;
+    }
+
+    public void RemoveItem()
+    {
+        itemImage.enabled = false;
+        item = null;
+
     }
 }
 
