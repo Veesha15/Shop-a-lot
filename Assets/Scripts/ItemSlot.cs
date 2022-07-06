@@ -8,6 +8,7 @@ using System;
 public class ItemSlot : MainSlot
 {
     public static event Action<ItemSlot> EquipEvent;
+    public static event Action<ItemSlot> SellEvent;
 
     public override void InteractWithSlot()
     {

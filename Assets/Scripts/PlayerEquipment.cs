@@ -22,9 +22,22 @@ public class PlayerEquipment : MonoBehaviour
         {
             if (equipmentSlot.bodyPart == _itemSlot.item.bodyPart)
             {
-                equipmentSlot.AddItem(_itemSlot.item);
+                ItemObject orginalItem = equipmentSlot.item;
 
-                _itemSlot.RemoveItem();
+                equipmentSlot.AddItem(_itemSlot.item);
+                equipmentSlot.EquipPlayer();
+
+                if (orginalItem == null)
+                {
+                    _itemSlot.RemoveItem();
+                }
+
+                else
+                {
+                    _itemSlot.AddItem(orginalItem);
+                }
+                
+                return;
             }
         }
     }

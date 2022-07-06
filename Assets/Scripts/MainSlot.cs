@@ -13,7 +13,7 @@ public class MainSlot : MonoBehaviour, IPointerClickHandler
     {
         itemImage = transform.GetChild(0).GetComponent<Image>();
         
-        if (item != null) //
+        if (item != null) // TODO: editor script
         {
             itemImage.sprite = item.icon;
         }
@@ -23,7 +23,10 @@ public class MainSlot : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Right)
         {
-            InteractWithSlot();
+            if (item != null)
+            {
+                InteractWithSlot();
+            }   
         }
     }
 
@@ -38,6 +41,7 @@ public class MainSlot : MonoBehaviour, IPointerClickHandler
     {
         item = _receivedItem;
         itemImage.sprite = _receivedItem.icon;
+        itemImage.enabled = true;
     }
 
 
