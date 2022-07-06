@@ -5,7 +5,7 @@ using System;
 
 public class EquipmentSlot : MainSlot
 {
-    [SerializeField] SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
     public BodyPart bodyPart;
 
     public static event Action<ItemObject> Unequip;

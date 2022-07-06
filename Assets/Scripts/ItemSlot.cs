@@ -1,19 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using System;
 
 public class ItemSlot : MainSlot
 {
     public static event Action<ItemSlot> EquipEvent;
-    public static event Action<ItemSlot> SellEvent;
+    public static event Action<ItemObject> SellEvent;
 
     public override void InteractWithSlot()
     {
         base.InteractWithSlot();
-        EquipEvent?.Invoke(this);
+
+        if (!GameManager.ShopWindowOpen)
+        {
+            EquipEvent?.Invoke(this);
+        }
+
+        else if (GameManager.ShopWindowOpen)
+        {
+            SellEvent?.Invoke(item);
+            RemoveItem();
+        }
+        
     }
 
 }

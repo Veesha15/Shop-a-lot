@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
-    [SerializeField] Transform player;
+    //[SerializeField] Transform player;
     [SerializeField] GameObject popupWindow;
     public bool playerInRange;
 
@@ -14,6 +14,7 @@ public class Shop : MonoBehaviour
         if (playerInRange)
         {
             popupWindow.SetActive(true);
+            GameManager.ShopWindowOpen = true;
         }
     }
 
@@ -27,6 +28,7 @@ public class Shop : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         playerInRange = false;
+        GameManager.ShopWindowOpen = false;
     }
 
 
