@@ -8,6 +8,7 @@ public class MainSlot : MonoBehaviour, IPointerClickHandler
     private Image itemImage;
     public ItemObject item;
 
+    
 
     protected virtual void Start()
     {
@@ -33,14 +34,14 @@ public class MainSlot : MonoBehaviour, IPointerClickHandler
 
     public virtual void InteractWithSlot()
     {
-
+        // overridden by different slot types
     }
 
 
-    public void AddItem(ItemObject _receivedItem)
+    public void AddItem(ItemObject _item)
     {
-        item = _receivedItem;
-        itemImage.sprite = _receivedItem.icon;
+        item = _item;
+        itemImage.sprite = _item.icon;
         itemImage.enabled = true;
     }
 
@@ -49,7 +50,6 @@ public class MainSlot : MonoBehaviour, IPointerClickHandler
     {
         itemImage.enabled = false;
         item = null;
-
     }
 
 }

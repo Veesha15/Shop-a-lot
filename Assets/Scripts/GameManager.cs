@@ -1,26 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public int money;
+    private int money;
 
     public static bool ShopWindowOpen;
 
-    private void OnEnable()
+
+
+    public void AddMoney(int _amount)
     {
-        ItemSlot.SellEvent += ReceiveMoney;
+        money += _amount;
     }
 
-    private void OnDisable()
+    public void RemoveMoney(int _amount)
     {
-        
-    }
-
-    private void ReceiveMoney(ItemObject _item)
-    {
-        money += _item.sellPrice;
+        money -= _amount;
     }
 
 }

@@ -4,21 +4,31 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    [SerializeField] private ItemSlot[] inventorySlots; // change to list + dictionary for more complex inventory system
+    [SerializeField] GameManager GM;
+    [SerializeField] private InventorySlot[] inventorySlots; // change to list + dictionary for more complex inventory system
+    
 
     private void OnEnable()
     {
-        EquipmentSlot.Unequip += AddToInventory;
+        EquipmentSlot.Unequip += UnequipItem;
+        InventorySlot.SellEvent += SellItem;
     }
 
 
     private void OnDisable()
     {
-        EquipmentSlot.Unequip -= AddToInventory;
+        EquipmentSlot.Unequip -= UnequipItem;
+        InventorySlot.SellEvent -= SellItem;
     }
 
 
-    public int FindEmptySlot()
+    private void Awake()
+    {
+        GM = FindObjectOfType<GameManager>();
+    }
+
+
+    private int EmptySlotIndex()
     {
         int returnValue = -1;
 
@@ -34,13 +44,40 @@ public class PlayerInventory : MonoBehaviour
         return returnValue;
     }
 
-    private void AddToInventory(ItemObject _item)
+
+    private void UnequipItem(EquipmentSlot _clickedSlot)
     {
-        if (FindEmptySlot() >= 0)
+        int index = EmptySlotIndex();
+
+        if (index >= 0) // negative number means no empty slot was found
         {
-            inventorySlots[FindEmptySlot()].AddItem(_item);
+            inventorySlots[index].AddItem(_clickedSlot.item);
+            _clickedSlot.RemoveItem();
+            _clickedSlot.UnequipPlayer();
         }
     }
+
+
+    private void SellItem(InventorySlot _clickedSlot)
+    {
+        GM.AddMoney(_clickedSlot.item.sellPrice);
+        _clickedSlot.RemoveItem();
+    }
+
+
+    private void BuyItem(EquipmentSlot _clickedSlot)
+    {
+        int index = EmptySlotIndex();
+
+        if (index >= 0) // negative number means no empty slot was found
+        {
+            inventorySlots[index].AddItem(_clickedSlot.item);
+            _clickedSlot.RemoveItem();
+            _clickedSlot.UnequipPlayer();
+        }
+    }
+
+
 
 
 

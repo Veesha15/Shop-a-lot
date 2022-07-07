@@ -5,26 +5,26 @@ using System;
 
 public class EquipmentSlot : MainSlot
 {
-    public SpriteRenderer spriteRenderer;
-    public BodyPart bodyPart;
+    [SerializeField] private SpriteRenderer spriteRenderer; // used to show equipment on player
+    public EquipmentType equipmentType;
 
-    public static event Action<ItemObject> Unequip;
+    public static event Action<EquipmentSlot> Unequip;
+
 
     public override void InteractWithSlot()
     {
         base.InteractWithSlot();
-        // TODO: if empty slot is found
-        Unequip?.Invoke(item);
-        UnequipPlayer();
-        RemoveItem();
+        Unequip?.Invoke(this);  
     }
+
 
     public void EquipPlayer()
     {
         spriteRenderer.sprite = item.icon;
     }
 
-    private void UnequipPlayer()
+
+    public void UnequipPlayer()
     {
         spriteRenderer.sprite = null;
     }

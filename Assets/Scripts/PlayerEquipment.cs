@@ -7,39 +7,40 @@ public class PlayerEquipment : MonoBehaviour
 
     private void OnEnable()
     {
-        ItemSlot.EquipEvent += EquipItem;
+        InventorySlot.EquipEvent += EquipItem;
     }
 
     private void OnDisable()
     {
-        ItemSlot.EquipEvent -= EquipItem;
+        InventorySlot.EquipEvent -= EquipItem;
     }
 
 
-    private void EquipItem(ItemSlot _itemSlot)
+    private void EquipItem(MainSlot _clickedSlot)
     {
         foreach(EquipmentSlot equipmentSlot in equipmentSlots)
         {
-            if (equipmentSlot.bodyPart == _itemSlot.item.bodyPart)
+            if (equipmentSlot.equipmentType == _clickedSlot.item.equipmentType)
             {
-                ItemObject orginalItem = equipmentSlot.item;
+                ItemObject equippedItem = equipmentSlot.item; // if an item is already equipped - swop items
 
-                equipmentSlot.AddItem(_itemSlot.item);
+                equipmentSlot.AddItem(_clickedSlot.item);
                 equipmentSlot.EquipPlayer();
 
-                if (orginalItem == null)
+                if (equippedItem == null) 
                 {
-                    _itemSlot.RemoveItem();
+                    _clickedSlot.RemoveItem();
                 }
 
                 else
                 {
-                    _itemSlot.AddItem(orginalItem);
+                    _clickedSlot.AddItem(equippedItem);
                 }
-                
+
                 return;
             }
         }
     }
+
 
 }
