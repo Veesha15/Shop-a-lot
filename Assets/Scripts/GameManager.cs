@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private int money;
-
+    public int money { get; private set; }
     public static bool ShopWindowOpen;
 
 

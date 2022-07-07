@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] Transform movePoint; // empty game object that works like a movement tracker
-    float moveSpeed = 5;
+    [SerializeField] private Transform movePoint; // empty game object that works like a movement tracker
+    [SerializeField] private LayerMask obstacle;
+    private float moveSpeed = 5;
 
     void Start()
     {
@@ -14,7 +15,16 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
+        if (!Physics2D.OverlapCircle(movePoint.position, 0.2f, obstacle))
+        {
+            transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
+        }
+
+        else
+        {
+            movePoint.position = Vector3Int.RoundToInt(transform.position);
+        }
+
 
         if (Vector3.Distance(transform.position, movePoint.position) < 0.1f)
         {
