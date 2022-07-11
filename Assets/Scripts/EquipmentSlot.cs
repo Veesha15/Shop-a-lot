@@ -21,13 +21,19 @@ public class EquipmentSlot : MainSlot
     public void EquipPlayer()
     {
         playerDisplay.sprite = item.icon;
+        //playerDisplay.enabled = true;
+
         potraitDisplay.sprite = item.icon;
+        potraitDisplay.enabled = true;
     }
 
 
     public void UnequipPlayer()
     {
         playerDisplay.sprite = null;
+        //playerDisplay.enabled = false;
+
         potraitDisplay.sprite = null;
+        potraitDisplay.enabled = false;
     }
 }

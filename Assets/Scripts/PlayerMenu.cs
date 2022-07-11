@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerMenu : MonoBehaviour
 {
@@ -9,8 +10,15 @@ public class PlayerMenu : MonoBehaviour
 
     [SerializeField] private InventorySlot[] inventorySlots; // change to list + dictionary for more complex inventory system
     [SerializeField] private EquipmentSlot[] equipmentSlots;
-    [SerializeField] RectTransform infoWindow; // rect because we need to set anchor / pivot 
     [SerializeField] GameObject playerMenuWindow;
+
+    [SerializeField] RectTransform infoWindow; // rect because we need to set anchor / pivot 
+    private bool infoOpen;
+    private InventorySlot infoedSlot;
+    [SerializeField] TextMeshProUGUI itemName;
+    [SerializeField] TextMeshProUGUI itemFunction;
+    [SerializeField] TextMeshProUGUI itemPrice;
+    [SerializeField] Button destroyButton;
 
 
     private void OnEnable()
@@ -77,9 +85,11 @@ public class PlayerMenu : MonoBehaviour
                     _clickedSlot.AddItem(equippedItem);
                 }
 
+                CloseInfo();
                 return;
             }
         }
+        
     }
 
 
@@ -100,6 +110,7 @@ public class PlayerMenu : MonoBehaviour
     {
         GM.AddMoney(_clickedSlot.item.sellPrice);
         _clickedSlot.RemoveItem();
+        CloseInfo();
     }
 
 
@@ -119,10 +130,37 @@ public class PlayerMenu : MonoBehaviour
 
     private void ToggleInfoWindow(InventorySlot _clickedSlot)
     {
-        infoWindow.anchoredPosition = Vector2.zero; // reset postion other it will use previous position
-        infoWindow.gameObject.SetActive(!infoWindow.gameObject.activeSelf);
-        infoWindow.SetParent(_clickedSlot.transform, false);
-        infoWindow.SetParent(playerMenuWindow.transform, true); // need to unparent to display on top of other slots
+        if (infoOpen && _clickedSlot == infoedSlot)
+        {
+            CloseInfo();
+        }
+
+        else
+        {
+            infoedSlot = _clickedSlot;
+            infoWindow.anchoredPosition = Vector2.zero; // reset postion other it will use previous position
+            infoWindow.SetParent(_clickedSlot.transform, false);
+            infoWindow.SetParent(playerMenuWindow.transform, true); // need to unparent to display on top of other slots
+
+            itemName.text = _clickedSlot.item.name;
+            itemFunction.text = ($"Wearable: {_clickedSlot.item.equipmentType}");
+            itemPrice.text = _clickedSlot.item.sellPrice.ToString();
+
+            infoWindow.gameObject.SetActive(true);
+            infoOpen = true;
+        }
+    }
+
+    public void DestroyItem()
+    {
+        infoedSlot.RemoveItem();
+        CloseInfo();
+    }
+
+    private void CloseInfo()
+    {
+        infoWindow.gameObject.SetActive(false);
+        infoedSlot = null;
     }
 
 

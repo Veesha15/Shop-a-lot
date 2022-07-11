@@ -17,6 +17,7 @@ public class MainSlot : MonoBehaviour, IPointerClickHandler
         if (item != null) // TODO: editor script
         {
             itemImage.sprite = item.icon;
+            itemImage.enabled = true;
         }
     }
 
