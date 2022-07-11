@@ -5,6 +5,8 @@ public class GameManager : MonoBehaviour
     public int money { get; private set; }
     public static bool ShopWindowOpen;
 
+    
+
 
 
     public void AddMoney(int _amount)
@@ -15,6 +17,11 @@ public class GameManager : MonoBehaviour
     public void RemoveMoney(int _amount)
     {
         money -= _amount;
+    }
+
+    public static void PosInfoWindow()
+    {
+
     }
 
 }

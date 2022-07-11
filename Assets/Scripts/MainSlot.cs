@@ -29,10 +29,24 @@ public class MainSlot : MonoBehaviour, IPointerClickHandler
                 InteractWithSlot();
             }   
         }
+
+        else if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            if (item != null)
+            {
+                OtherSlotAction();
+            }
+        }
     }
 
 
     public virtual void InteractWithSlot()
+    {
+        // overridden by different slot types
+    }
+
+
+    public virtual void OtherSlotAction()
     {
         // overridden by different slot types
     }
@@ -51,5 +65,6 @@ public class MainSlot : MonoBehaviour, IPointerClickHandler
         itemImage.enabled = false;
         item = null;
     }
+
 
 }

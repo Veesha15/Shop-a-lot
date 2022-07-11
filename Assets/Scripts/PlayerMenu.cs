@@ -8,6 +8,8 @@ public class PlayerMenu : MonoBehaviour
 
     [SerializeField] private InventorySlot[] inventorySlots; // change to list + dictionary for more complex inventory system
     [SerializeField] private EquipmentSlot[] equipmentSlots;
+    [SerializeField] RectTransform infoWindow;
+    [SerializeField] GameObject playerMenuWindow;
 
 
     private void OnEnable()
@@ -16,6 +18,7 @@ public class PlayerMenu : MonoBehaviour
         ShopSlot.BuyEvent += BuyItem;
         InventorySlot.SellEvent += SellItem;
         InventorySlot.EquipEvent += EquipItem;
+        InventorySlot.InfoEvent += ToggleInfoWindow;
     }
 
 
@@ -25,6 +28,7 @@ public class PlayerMenu : MonoBehaviour
         ShopSlot.BuyEvent -= BuyItem;
         InventorySlot.SellEvent -= SellItem;
         InventorySlot.EquipEvent -= EquipItem;
+        InventorySlot.InfoEvent -= ToggleInfoWindow;
     }
 
 
@@ -110,6 +114,14 @@ public class PlayerMenu : MonoBehaviour
                 GM.RemoveMoney(_clickedSlot.item.buyPrice);
             }
         }
+    }
+
+    private void ToggleInfoWindow(InventorySlot _clickedSlot)
+    {
+        infoWindow.anchoredPosition = Vector2.zero;
+        infoWindow.gameObject.SetActive(!infoWindow.gameObject.activeSelf);
+        infoWindow.SetParent(_clickedSlot.transform, false);
+        infoWindow.SetParent(playerMenuWindow.transform, true);
     }
 
 
