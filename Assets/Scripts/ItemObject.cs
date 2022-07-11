@@ -16,6 +16,7 @@ public enum EquipmentType
 {
     Head,
     Chest,
+    Waist,
     Legs
 }
 

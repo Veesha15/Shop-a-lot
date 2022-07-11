@@ -1,9 +1,11 @@
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class EquipmentSlot : MainSlot
 {
-    [SerializeField] private SpriteRenderer spriteRenderer; // used to show equipment on player
+    [SerializeField] private SpriteRenderer playerDisplay; // used to show equipment on player
+    [SerializeField] private Image potraitDisplay; // used to show equipment on player
     public EquipmentType equipmentType;
 
     public static event Action<EquipmentSlot> UnequipEvent;
@@ -18,12 +20,14 @@ public class EquipmentSlot : MainSlot
 
     public void EquipPlayer()
     {
-        spriteRenderer.sprite = item.icon;
+        playerDisplay.sprite = item.icon;
+        potraitDisplay.sprite = item.icon;
     }
 
 
     public void UnequipPlayer()
     {
-        spriteRenderer.sprite = null;
+        playerDisplay.sprite = null;
+        potraitDisplay.sprite = null;
     }
 }

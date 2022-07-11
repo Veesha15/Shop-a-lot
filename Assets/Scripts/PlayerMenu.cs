@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMenu : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class PlayerMenu : MonoBehaviour
 
     [SerializeField] private InventorySlot[] inventorySlots; // change to list + dictionary for more complex inventory system
     [SerializeField] private EquipmentSlot[] equipmentSlots;
-    [SerializeField] RectTransform infoWindow;
+    [SerializeField] RectTransform infoWindow; // rect because we need to set anchor / pivot 
     [SerializeField] GameObject playerMenuWindow;
 
 
@@ -118,10 +119,10 @@ public class PlayerMenu : MonoBehaviour
 
     private void ToggleInfoWindow(InventorySlot _clickedSlot)
     {
-        infoWindow.anchoredPosition = Vector2.zero;
+        infoWindow.anchoredPosition = Vector2.zero; // reset postion other it will use previous position
         infoWindow.gameObject.SetActive(!infoWindow.gameObject.activeSelf);
         infoWindow.SetParent(_clickedSlot.transform, false);
-        infoWindow.SetParent(playerMenuWindow.transform, true);
+        infoWindow.SetParent(playerMenuWindow.transform, true); // need to unparent to display on top of other slots
     }
 
 
