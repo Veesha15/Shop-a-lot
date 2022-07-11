@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ public class Shop : MonoBehaviour
     [SerializeField] GameObject popupWindow;
     public bool playerInRange;
 
+    public static event Action OpenWindowEvent;
+    public static event Action CloseWindowEvent;
 
     private void Awake()
     {
@@ -17,7 +20,7 @@ public class Shop : MonoBehaviour
 
     private void Update()
     {
-        if (Vector2.Distance(player.position, transform.position) < 2)
+        if (Vector2.Distance(player.position, transform.position) < 2) // TODO: use vector point as trigger point
         {
             playerInRange = true;
         }
@@ -25,7 +28,7 @@ public class Shop : MonoBehaviour
         else
         {
             playerInRange = false;
-            GameManager.ShopWindowOpen = false;
+            CloseWindow();
         }
     }
 
@@ -34,9 +37,24 @@ public class Shop : MonoBehaviour
     {
         if (playerInRange)
         {
-            popupWindow.SetActive(true);
-            GameManager.ShopWindowOpen = true;
+            OpenWindow();
         }
+    }
+
+
+    private void OpenWindow()
+    {
+        popupWindow.SetActive(true);
+        GameManager.ShopWindowOpen = true;
+        OpenWindowEvent?.Invoke();
+    }
+
+
+    private void CloseWindow()
+    {
+        popupWindow.SetActive(false);
+        GameManager.ShopWindowOpen = false;
+        CloseWindowEvent?.Invoke();
     }
 
 

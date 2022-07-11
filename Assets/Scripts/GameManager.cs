@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
 
 
 
+
+
     public void AddMoney(int _amount)
     {
         money += _amount;
@@ -29,9 +31,6 @@ public class GameManager : MonoBehaviour
         moneyText.text = money.ToString();
     }
 
-    public static void PosInfoWindow()
-    {
 
-    }
 
 }

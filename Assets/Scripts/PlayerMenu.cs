@@ -18,7 +18,6 @@ public class PlayerMenu : MonoBehaviour
     [SerializeField] TextMeshProUGUI itemName;
     [SerializeField] TextMeshProUGUI itemFunction;
     [SerializeField] TextMeshProUGUI itemPrice;
-    [SerializeField] Button destroyButton;
 
 
     private void OnEnable()
@@ -28,6 +27,8 @@ public class PlayerMenu : MonoBehaviour
         InventorySlot.SellEvent += SellItem;
         InventorySlot.EquipEvent += EquipItem;
         InventorySlot.InfoEvent += ToggleInfoWindow;
+        Shop.OpenWindowEvent += OpenInventory;
+        Shop.CloseWindowEvent += CloseInventory;
     }
 
 
@@ -38,6 +39,8 @@ public class PlayerMenu : MonoBehaviour
         InventorySlot.SellEvent -= SellItem;
         InventorySlot.EquipEvent -= EquipItem;
         InventorySlot.InfoEvent -= ToggleInfoWindow;
+        Shop.OpenWindowEvent -= OpenInventory;
+        Shop.CloseWindowEvent -= CloseInventory;
     }
 
 
@@ -161,6 +164,17 @@ public class PlayerMenu : MonoBehaviour
     {
         infoWindow.gameObject.SetActive(false);
         infoedSlot = null;
+    }
+
+    public void OpenInventory() 
+    {
+        playerMenuWindow.SetActive(true);
+    }
+
+
+    public void CloseInventory() 
+    {
+        playerMenuWindow.SetActive(false);
     }
 
 
