@@ -18,23 +18,9 @@ public class Shop : MonoBehaviour
     }
 
 
-    private void Update()
-    {
-        if (Vector2.Distance(player.position, transform.position) < 2) // TODO: use vector point as trigger point
-        {
-            playerInRange = true;
-        }
-
-        else
-        {
-            playerInRange = false;
-            CloseWindow();
-        }
-    }
-
-
     private void OnMouseDown()
     {
+        print("clicked on building");
         if (playerInRange)
         {
             OpenWindow();
@@ -55,6 +41,17 @@ public class Shop : MonoBehaviour
         popupWindow.SetActive(false);
         GameManager.ShopWindowOpen = false;
         CloseWindowEvent?.Invoke();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        playerInRange = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        playerInRange = false;
+        CloseWindow();
     }
 
 

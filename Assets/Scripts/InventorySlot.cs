@@ -7,10 +7,7 @@ public class InventorySlot : MainSlot
     public static event Action<InventorySlot> EquipEvent;
     public static event Action<InventorySlot> SellEvent;
     public static event Action<InventorySlot> InfoEvent;
-
-    // TODO: try using event with the same name twice but with different parameters
-
-    
+  
 
     public override void InteractWithSlot()
     {
