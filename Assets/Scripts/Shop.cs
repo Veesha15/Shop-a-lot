@@ -20,7 +20,6 @@ public class Shop : MonoBehaviour
 
     private void OnMouseDown()
     {
-        print("clicked on building");
         if (playerInRange)
         {
             OpenWindow();
