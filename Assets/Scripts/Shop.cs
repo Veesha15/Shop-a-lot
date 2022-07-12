@@ -1,20 +1,27 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Shop : MonoBehaviour
+// collider is around door only
+
+public class Shop : MonoBehaviour // attached to "building" 
 {
-    private Transform player;
     [SerializeField] GameObject popupWindow;
-    public bool playerInRange;
+    private bool playerInRange;
 
     public static event Action OpenWindowEvent;
     public static event Action CloseWindowEvent;
 
-    private void Awake()
+
+    private void OnTriggerEnter2D(Collider2D collision) 
     {
-        player = FindObjectOfType<PlayerMovement>().transform;
+        playerInRange = true;
+    }
+
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        playerInRange = false;
+        CloseWindow();
     }
 
 
@@ -42,16 +49,7 @@ public class Shop : MonoBehaviour
         CloseWindowEvent?.Invoke();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        playerInRange = true;
-    }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        playerInRange = false;
-        CloseWindow();
-    }
 
 
 }
