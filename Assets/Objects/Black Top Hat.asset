@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e68aeede0e18004d91b1634850ccc9c, type: 3}
   m_Name: Black Top Hat
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 85d31bcfb0207fd47bf51c8097298f89, type: 3}
-  sellPrice: 5
-  buyPrice: 8
-  bodyPart: 0
+  icon: {fileID: 21300000, guid: a0056c696b4f1d246a3a78c4f9fa14a5, type: 3}
+  sellPrice: 2
+  buyPrice: 45
+  equipmentType: 0

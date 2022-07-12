@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Blue Top Hat
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: f45ed6ed74c2517458a54ac6572b486c, type: 3}
-  sellPrice: 2
+  sellPrice: 45
   buyPrice: 1
-  bodyPart: 0
+  equipmentType: 0
