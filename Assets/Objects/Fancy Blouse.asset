@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e68aeede0e18004d91b1634850ccc9c, type: 3}
-  m_Name: Starry Top
+  m_Name: Fancy Blouse
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: c50f0a05719f47f45a6eeaedc189d3ef, type: 3}
-  sellPrice: 5
-  buyPrice: 8
+  icon: {fileID: 21300000, guid: ad16fd39707524a4ea03b544fe3587aa, type: 3}
+  sellPrice: 9
+  buyPrice: 12
   equipmentType: 1
