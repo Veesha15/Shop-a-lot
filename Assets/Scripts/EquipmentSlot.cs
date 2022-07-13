@@ -21,7 +21,6 @@ public class EquipmentSlot : MainSlot
     public void EquipPlayer()
     {
         playerDisplay.sprite = item.icon;
-        //playerDisplay.enabled = true;
 
         potraitDisplay.sprite = item.icon;
         potraitDisplay.enabled = true;
@@ -30,8 +29,8 @@ public class EquipmentSlot : MainSlot
 
     public void UnequipPlayer()
     {
-        playerDisplay.sprite = null;
-        //playerDisplay.enabled = false;
+        playerDisplay.sprite = null; 
+        // sprite renderer doesn't have white block like UI image
 
         potraitDisplay.sprite = null;
         potraitDisplay.enabled = false;

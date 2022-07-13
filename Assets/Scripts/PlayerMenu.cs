@@ -50,6 +50,18 @@ public class PlayerMenu : MonoBehaviour
     }
 
 
+    private void Start()
+    {
+        foreach (EquipmentSlot _slot in equipmentSlots)
+        {
+            if (_slot.item != null)
+            {
+                _slot.EquipPlayer();
+            }
+        }
+    }
+
+
     private int EmptySlotIndex()
     {
         int returnValue = -1;

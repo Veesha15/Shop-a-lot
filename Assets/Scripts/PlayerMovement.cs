@@ -15,6 +15,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (Physics2D.OverlapCircle(movePoint.position, 0.2f, obstacle))
+        {
+            print("collide");
+        }
+
         if (!Physics2D.OverlapCircle(movePoint.position, 0.2f, obstacle))
         {
             transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
