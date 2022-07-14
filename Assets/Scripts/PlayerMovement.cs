@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] Animator anim;
     [SerializeField] private Transform movePoint; // empty game object that works like a movement tracker
     [SerializeField] private LayerMask obstacle;
     private float moveSpeed = 5;
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (atMovePoint) // if player is at the move point, the move point is able to be moved using the WASD keys
         {
+            anim.SetBool("IsWalking", false);
             float xInput = Input.GetAxisRaw("Horizontal");
             float yInput = Input.GetAxisRaw("Vertical");
 
@@ -31,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (!atMovePoint) // if the move point is a certain distance away from the player
         {
+            anim.SetBool("IsWalking", true);
             transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
 
             if (Vector3.Distance(transform.position, movePoint.position) == 0)

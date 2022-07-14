@@ -8012,6 +8012,7 @@ GameObject:
   - component: {fileID: 1868602092}
   - component: {fileID: 1868602088}
   - component: {fileID: 1868602094}
+  - component: {fileID: 1868602096}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -8031,6 +8032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51f87dd0ae09a2b4e8d436e9041529fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 1868602096}
   movePoint: {fileID: 746459600}
   obstacle:
     serializedVersion: 2
@@ -8190,6 +8192,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.65, y: 1.6}
   m_EdgeRadius: 0
+--- !u!95 &1868602096
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868602087}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: adeb82fbac486834e8cc7028df6f5fa1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1897043037
 PrefabInstance:
   m_ObjectHideFlags: 0
