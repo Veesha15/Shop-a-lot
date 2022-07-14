@@ -51,26 +51,4 @@ public class PlayerMovement : MonoBehaviour
         return Physics2D.OverlapCircle(movePoint.position, 0.2f, obstacle);
     }
 
-
-    private void OldMove()
-    {
-        if (!Physics2D.OverlapCircle(movePoint.position, 0.2f, obstacle))
-        {
-            transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
-        }
-
-        else
-        {
-            movePoint.position = Vector3Int.RoundToInt(transform.position);
-        }
-
-
-        if (Vector3.Distance(transform.position, movePoint.position) < 0.1f)
-        {
-            float xInput = Input.GetAxisRaw("Horizontal");
-            float yInput = Input.GetAxisRaw("Vertical");
-
-            movePoint.Translate(xInput, yInput, 0);
-        }
-    }
 }
