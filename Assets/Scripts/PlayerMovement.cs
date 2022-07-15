@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,9 +11,12 @@ public class PlayerMovement : MonoBehaviour
     private float moveSpeed = 5;
     private bool atMovePoint = true; // whether the player has reached the move point
 
+    private SortingGroup _sortingGroup; // TODO: add sorting order to stationary objects via code instead of manually 
+
     void Start()
     {
         movePoint.parent = null;
+        _sortingGroup = GetComponent<SortingGroup>();
     }
 
     void Update()
@@ -46,6 +50,8 @@ public class PlayerMovement : MonoBehaviour
         {
             movePoint.position = transform.position; // reset move point
         }
+
+        _sortingGroup.sortingOrder = (int)(transform.position.y * -8); // think pivot point of sprite also plays a role in how well formula works
 
     }
 
