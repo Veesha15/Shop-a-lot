@@ -7,12 +7,15 @@ using UnityEngine;
 public class Shop : MonoBehaviour // attached to "building" 
 {
     [SerializeField] private GameObject popupWindow;
+    [SerializeField] private SpriteRenderer signText;
+    [SerializeField] private Sprite enterBright, enterDull, exitBright;
     
     [SerializeField] private List<ItemObject> allItems = new List<ItemObject>(); // stays constant
     [SerializeField] private ShopSlot[] shopSlots;
     [SerializeField] private List<ItemObject> currentItems = new List<ItemObject>(); // gets removed from
     
     private bool playerInRange;
+    private bool windowIsOpen;
 
     public static event Action OpenWindowEvent;
     public static event Action CloseWindowEvent;
@@ -21,6 +24,7 @@ public class Shop : MonoBehaviour // attached to "building"
     private void OnTriggerEnter2D(Collider2D collision) 
     {
         playerInRange = true;
+        signText.sprite = enterBright;
     }
 
 
@@ -28,6 +32,7 @@ public class Shop : MonoBehaviour // attached to "building"
     {
         playerInRange = false;
         CloseWindow();
+        signText.sprite = enterDull; // needs to be after close because close sets it to bright
     }
 
 
@@ -35,7 +40,16 @@ public class Shop : MonoBehaviour // attached to "building"
     {
         if (playerInRange)
         {
-            OpenWindow();
+            if (!windowIsOpen)
+            {
+                OpenWindow();
+            }
+
+            else
+            {
+                CloseWindow();
+            }
+            
         }
     }
 
@@ -45,7 +59,9 @@ public class Shop : MonoBehaviour // attached to "building"
         popupWindow.SetActive(true);
         GameManager.ShopWindowOpen = true;
         OpenWindowEvent?.Invoke();
+        signText.sprite = exitBright;
         DisplayShopItem();
+        windowIsOpen = true;
     }
 
 
@@ -54,6 +70,8 @@ public class Shop : MonoBehaviour // attached to "building"
         popupWindow.SetActive(false);
         GameManager.ShopWindowOpen = false;
         CloseWindowEvent?.Invoke();
+        signText.sprite = enterBright;
+        windowIsOpen = false;
     }
 
 
@@ -72,10 +90,7 @@ public class Shop : MonoBehaviour // attached to "building"
                 shopSlots[i].DisplayItem(currentItems[randomIndex]);
                 currentItems.RemoveAt(randomIndex);
             }
-
         }
-
-
     }
 
 }
