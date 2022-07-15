@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff323cff4a3f0bf41ad011e5c496c9b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemImage: {fileID: 8953115724431591936}
   item: {fileID: 0}
   playerDisplay: {fileID: 0}
   potraitDisplay: {fileID: 0}

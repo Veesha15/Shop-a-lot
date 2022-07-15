@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e68aeede0e18004d91b1634850ccc9c, type: 3}
-  m_Name: Fancy Blouse
+  m_Name: Whimsical Hat
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 59161cc65f8fbc54e936305530bcd615, type: 3}
+  icon: {fileID: 21300000, guid: 575c3784900ce1f46b0d7939aa1c9c7c, type: 3}
   sellPrice: 0
   buyPrice: 0
-  equipmentType: 1
+  equipmentType: 0

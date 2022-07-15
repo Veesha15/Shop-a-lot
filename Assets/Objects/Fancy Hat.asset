@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e68aeede0e18004d91b1634850ccc9c, type: 3}
   m_Name: Fancy Hat
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: e555b54f32e94464ea81911f1f0732b1, type: 3}
-  sellPrice: 9
-  buyPrice: 12
+  icon: {fileID: 21300000, guid: 11829d4a950d43d49a49c7bb7f45474f, type: 3}
+  sellPrice: 0
+  buyPrice: 0
   equipmentType: 0

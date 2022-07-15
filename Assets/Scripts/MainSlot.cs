@@ -5,15 +5,19 @@ using UnityEngine.UI;
 // TODO: protected instead of public?
 public class MainSlot : MonoBehaviour, IPointerClickHandler
 {
-    private Image itemImage;
+    [Header("Set in Prefab")]
+    [SerializeField] private Image itemImage;
+    /* had an issue with this being assigned in Start
+     * other methods (that were dependant) got called before Start
+     Start was only called when the slot was set as active * */
+
+    [Header("Set in Scene")]
     public ItemObject item;
 
     
 
     protected virtual void Start()
     {
-        itemImage = transform.GetChild(0).GetComponent<Image>();
-        
         if (item != null) // TODO: editor script
         {
             itemImage.sprite = item.icon;
@@ -55,8 +59,9 @@ public class MainSlot : MonoBehaviour, IPointerClickHandler
 
     public void AddItem(ItemObject _item)
     {
+        
         item = _item;
-        itemImage.sprite = _item.icon;
+        itemImage.sprite = item.icon;
         itemImage.enabled = true;
     }
 

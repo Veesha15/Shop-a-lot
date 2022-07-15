@@ -11,17 +11,18 @@ public class ShopSlot : MainSlot
  
     public static event Action<ShopSlot> BuyEvent;
 
-    protected override void Start()
-    {
-        base.Start(); // displays image if item in no null
-        itemName.text = item.name;
-        itemFunction.text = ($"Wearable: {item.equipmentType}");
-        itemPrice.text = item.buyPrice.ToString();
-    }
 
     public override void InteractWithSlot()
     {
         base.InteractWithSlot();
         BuyEvent?.Invoke(this);
+    }
+
+    public void DisplayItem(ItemObject _item)
+    {
+        AddItem(_item);
+        itemName.text = item.name;
+        itemFunction.text = ($"Wearable: {item.equipmentType}");
+        itemPrice.text = item.buyPrice.ToString();
     }
 }
