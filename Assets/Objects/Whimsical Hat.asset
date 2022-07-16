@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Whimsical Hat
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 575c3784900ce1f46b0d7939aa1c9c7c, type: 3}
-  sellPrice: 0
-  buyPrice: 0
+  sellPrice: 51
+  buyPrice: 53
   equipmentType: 0

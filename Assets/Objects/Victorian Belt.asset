@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Victorian Belt
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: a277abb05f61dbe4d802220efe6aafa5, type: 3}
-  sellPrice: 9
-  buyPrice: 12
+  sellPrice: 3
+  buyPrice: 5
   equipmentType: 2

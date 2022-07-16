@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Suit Hat
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 146a1d7acdfd32f44965ed73afed2c92, type: 3}
-  sellPrice: 12
-  buyPrice: 15
+  sellPrice: 34
+  buyPrice: 36
   equipmentType: 0

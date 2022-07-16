@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Fancy Hat
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 11829d4a950d43d49a49c7bb7f45474f, type: 3}
-  sellPrice: 0
-  buyPrice: 0
+  sellPrice: 98
+  buyPrice: 100
   equipmentType: 0

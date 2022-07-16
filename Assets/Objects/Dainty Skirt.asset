@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Dainty Skirt
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 576c709ea7f6b164b8096aa9f2f08b8e, type: 3}
-  sellPrice: 12
-  buyPrice: 15
+  sellPrice: 27
+  buyPrice: 29
   equipmentType: 3

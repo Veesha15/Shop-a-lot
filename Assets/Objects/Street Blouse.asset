@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Street Blouse
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 2ef43067bb1bf6d489b5cd934431bc3a, type: 3}
-  sellPrice: 0
-  buyPrice: 0
+  sellPrice: 47
+  buyPrice: 49
   equipmentType: 1

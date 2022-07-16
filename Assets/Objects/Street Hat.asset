@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Street Hat
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 41a4e44a67928cc4aaabc2783b4cebde, type: 3}
-  sellPrice: 0
-  buyPrice: 0
+  sellPrice: 43
+  buyPrice: 45
   equipmentType: 0

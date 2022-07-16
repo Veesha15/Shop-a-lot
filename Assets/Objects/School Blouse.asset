@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: School Blouse
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 90f47b64195f37345843f82f2096afe8, type: 3}
-  sellPrice: 0
-  buyPrice: 0
+  sellPrice: 64
+  buyPrice: 66
   equipmentType: 1

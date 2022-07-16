@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Whimsical Blouse
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: f7d9071cadf1fa84383d810be07b1d91, type: 3}
-  sellPrice: 0
-  buyPrice: 0
+  sellPrice: 54
+  buyPrice: 56
   equipmentType: 1

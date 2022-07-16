@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Dainty Blouse
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 2fed2fcfeebd16841a7330c8ea3e1aa3, type: 3}
-  sellPrice: 12
-  buyPrice: 15
+  sellPrice: 24
+  buyPrice: 26
   equipmentType: 1
