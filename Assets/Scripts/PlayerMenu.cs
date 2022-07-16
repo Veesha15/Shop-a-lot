@@ -19,6 +19,12 @@ public class PlayerMenu : MonoBehaviour
     [SerializeField] TextMeshProUGUI itemFunction;
     [SerializeField] TextMeshProUGUI itemPrice;
 
+    [SerializeField] GameObject warningWindow;
+    [SerializeField] TextMeshProUGUI warningText;
+    [SerializeField] Image warningIcon;
+    [SerializeField] WarningObject coindWarning, spaceWarning;
+
+
 
     private void OnEnable()
     {
@@ -140,7 +146,24 @@ public class PlayerMenu : MonoBehaviour
                 inventorySlots[index].AddItem(_clickedSlot.item);
                 GM.RemoveMoney(_clickedSlot.item.buyPrice);
             }
+
+            else
+            {
+                DisplayWarningWindow(spaceWarning);
+            }
         }
+
+        else
+        {
+            DisplayWarningWindow(coindWarning);
+        }
+    }
+
+    private void DisplayWarningWindow(WarningObject _object) // window is closed by assigning game object to button
+    {
+        warningText.text = _object.text;
+        warningIcon.sprite = _object.icon;
+        warningWindow.SetActive(true);
     }
 
     private void ToggleInfoWindow(InventorySlot _clickedSlot)

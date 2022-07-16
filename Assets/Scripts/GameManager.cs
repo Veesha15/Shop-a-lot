@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI moneyText;
 
-    public int money = 500; // TODO: make private
+    public int money = 2; // TODO: make private
     public static bool ShopWindowOpen;
 
 
