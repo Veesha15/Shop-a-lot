@@ -23,8 +23,11 @@ public class PlayerMenu : MonoBehaviour
     [SerializeField] TextMeshProUGUI warningText;
     [SerializeField] Image warningIcon;
     [SerializeField] WarningObject coindWarning, spaceWarning;
+    [SerializeField] TextMeshProUGUI destroyText;
 
+    [SerializeField] TextMeshProUGUI mouseInfoRightClick;
 
+    private bool destroyBool;
 
     private void OnEnable()
     {
@@ -186,24 +189,49 @@ public class PlayerMenu : MonoBehaviour
 
             infoWindow.gameObject.SetActive(true);
             infoOpen = true;
+
+            destroyText.text = "Bin Item";
+            destroyBool = false;
         }
     }
 
     public void DestroyItem()
     {
-        infoedSlot.RemoveItem();
-        CloseInfo();
+        if (destroyBool)
+        {
+            infoedSlot.RemoveItem();
+            CloseInfo();
+        }
+
+        else
+        {
+            destroyText.text = "I'm sure";
+            destroyBool = true;
+        }
+
     }
 
     private void CloseInfo()
     {
         infoWindow.gameObject.SetActive(false);
         infoedSlot = null;
+        destroyText.text = "Bin Item";
+        destroyBool = false;
     }
 
     public void OpenInventory() 
     {
         playerMenuWindow.SetActive(true);
+
+        if (GameManager.ShopWindowOpen)
+        {
+            mouseInfoRightClick.text = "buy/\nsell";
+        }
+
+        else
+        {
+            mouseInfoRightClick.text = "equip/\nunequip";
+        }
     }
 
 

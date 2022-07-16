@@ -31,6 +31,12 @@ public class GameManager : MonoBehaviour
         moneyText.text = money.ToString();
     }
 
+    public void AddTestMoney() // assigned to button in Inspector | for testing 
+    {
+        money += 10;
+        moneyText.text = money.ToString();
+    }
+
 
 
 }
