@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour // attached to "building" 
 {
+    [SerializeField] AudioManager audioManager;
+
     [SerializeField] private GameObject popupWindow;
     [SerializeField] private SpriteRenderer signText;
     [SerializeField] private Sprite enterBright, enterDull, exitBright;
@@ -25,6 +27,7 @@ public class Shop : MonoBehaviour // attached to "building"
     {
         playerInRange = true;
         signText.sprite = enterBright;
+        audioManager.PlaySound(audioManager.lightBulbSound);
     }
 
 
@@ -33,6 +36,7 @@ public class Shop : MonoBehaviour // attached to "building"
         playerInRange = false;
         CloseWindow();
         signText.sprite = enterDull; // needs to be after close because close sets it to bright
+        
     }
 
 
@@ -43,11 +47,13 @@ public class Shop : MonoBehaviour // attached to "building"
             if (!windowIsOpen)
             {
                 OpenWindow();
+                audioManager.PlaySound(audioManager.doorBellSound);
             }
 
             else
             {
                 CloseWindow();
+                //audioManager.PlaySound(audioManager.doorBellSound);
             }
             
         }
@@ -62,6 +68,7 @@ public class Shop : MonoBehaviour // attached to "building"
         signText.sprite = exitBright;
         DisplayShopItem();
         windowIsOpen = true;
+        
     }
 
 
@@ -72,6 +79,7 @@ public class Shop : MonoBehaviour // attached to "building"
         CloseWindowEvent?.Invoke();
         signText.sprite = enterBright;
         windowIsOpen = false;
+        audioManager.PlaySound(audioManager.lightBulbSound);
     }
 
 
