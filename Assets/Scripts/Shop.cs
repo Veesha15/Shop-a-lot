@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // collider is around door only
 
@@ -13,11 +14,12 @@ public class Shop : MonoBehaviour // attached to "building"
     [SerializeField] private List<ItemObject> allItems = new List<ItemObject>(); // stays constant
     [SerializeField] private ShopSlot[] shopSlots;
     [SerializeField] private List<ItemObject> currentItems = new List<ItemObject>(); // gets removed from
+
     
     private bool playerInRange;
     private bool windowIsOpen;
 
-    public static event Action OpenWindowEvent;
+    public static event Action OpenWindowEvent; // allow inventory window to open simutaniously
     public static event Action CloseWindowEvent;
 
 
@@ -31,8 +33,8 @@ public class Shop : MonoBehaviour // attached to "building"
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        playerInRange = false;
         CloseWindow();
+        playerInRange = false;
         signText.sprite = enterDull; // needs to be after close because close sets it to bright
         
     }
@@ -51,9 +53,7 @@ public class Shop : MonoBehaviour // attached to "building"
             else
             {
                 CloseWindow();
-                //audioManager.PlaySound(audioManager.doorBellSound);
-            }
-            
+            }  
         }
     }
 

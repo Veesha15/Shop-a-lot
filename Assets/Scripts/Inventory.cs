@@ -8,6 +8,7 @@ public class Inventory : MonoBehaviour // attached to Game Manager
     [SerializeField] private GameObject inventoryWindow;
     [SerializeField] private WarningWindow warningWindow;
     [SerializeField] private Button inventoryButton;
+    [SerializeField] private GameObject closeButton;
     
     [SerializeField] private InventorySlot[] inventorySlots; // change to list + dictionary for more complex inventory system
     [SerializeField] private EquipmentSlot[] equipmentSlots;
@@ -80,22 +81,22 @@ public class Inventory : MonoBehaviour // attached to Game Manager
         }
     }
 
-
     public void OpenInventory()
     {
-        inventoryWindow.SetActive(true);
-
         if (GameManager.ShopWindowOpen)
         {
             instructionsRightClick.text = "buy/\nsell";
+            closeButton.SetActive(false);
         }
 
         else
         {
             instructionsRightClick.text = "equip/\nunequip";
+            closeButton.SetActive(true);
         }
-    }
 
+        inventoryWindow.SetActive(true);
+    }
 
     public void CloseInventory()
     {
@@ -191,5 +192,12 @@ public class Inventory : MonoBehaviour // attached to Game Manager
             warningWindow.DisplayWindow(warningWindow.moneyWarning);
         }
     }
+
+
+
+
+
+
+
 
 }
