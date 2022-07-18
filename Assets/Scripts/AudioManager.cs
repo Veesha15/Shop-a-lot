@@ -14,6 +14,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip softSlotSound;
     public AudioClip mediumSlotSound;
     public AudioClip hardSlotSound;
+    public AudioClip notificationSound;
+    public AudioClip binSound;
 
 
     private void Awake()

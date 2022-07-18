@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class InventoryInfo : MonoBehaviour // attached to Game Manager
@@ -6,14 +7,19 @@ public class InventoryInfo : MonoBehaviour // attached to Game Manager
     [SerializeField] private RectTransform infoWindow; // rect because need to set anchor / pivot 
     [SerializeField] private Transform inventoryWindow;
 
-    [SerializeField] TextMeshProUGUI itemName;
-    [SerializeField] TextMeshProUGUI itemFunction;
-    [SerializeField] TextMeshProUGUI itemPrice;
-    [SerializeField] TextMeshProUGUI destroyText;
+    [SerializeField] TextMeshProUGUI infoName;
+    [SerializeField] TextMeshProUGUI infoType;
+    [SerializeField] TextMeshProUGUI infoPrice;
+
+    [SerializeField] Button destroyButton;
+    [SerializeField] Sprite binPending;
+    [SerializeField] Sprite binConfirm;
+    private Image destroyImage;
 
     private InventorySlot selectedSlot;
+
     private bool infoWindowIsOpen;
-    private bool destroyBool;
+    private bool destroyIsPending;
 
 
     private void OnEnable()
@@ -30,6 +36,12 @@ public class InventoryInfo : MonoBehaviour // attached to Game Manager
         InventorySlot.EquipEvent -= CloseInfoWindow;
     }
 
+
+    private void Awake()
+    {
+        destroyButton.onClick.AddListener(DestroyItem);
+        destroyImage = destroyButton.GetComponent<Image>();
+    }
 
     private void ToggleInfoWindow(InventorySlot _clickedSlot)
     {
@@ -52,40 +64,46 @@ public class InventoryInfo : MonoBehaviour // attached to Game Manager
         infoWindow.SetParent(_clickedSlot.transform, false);
         infoWindow.SetParent(inventoryWindow, true); // need to unparent to display on top of other slots
 
-        itemName.text = _clickedSlot.item.name;
-        itemFunction.text = ($"Wearable: {_clickedSlot.item.equipmentType}");
-        itemPrice.text = _clickedSlot.item.sellPrice.ToString();
+        infoName.text = _clickedSlot.item.name;
+        infoType.text = ($"Wearable: {_clickedSlot.item.equipmentType}");
+        infoPrice.text = _clickedSlot.item.sellPrice.ToString();
 
         infoWindow.gameObject.SetActive(true);
         infoWindowIsOpen = true;
 
-        destroyText.text = "Bin Item";
-        destroyBool = false;
+        ResetBin();
     }
 
     private void CloseInfoWindow(MainSlot _clickedSlot) // needs parameter because of event signature
     {
         infoWindow.gameObject.SetActive(false);
         selectedSlot = null;
-        destroyText.text = "Bin Item";
-        destroyBool = false;
+        ResetBin();
     }
 
 
     public void DestroyItem()
     {
-        if (destroyBool)
+        if (destroyIsPending)
         {
             selectedSlot.RemoveItem();
+            AudioManager.Instance.PlaySound(AudioManager.Instance.binSound);
             CloseInfoWindow(selectedSlot);
         }
 
         else
         {
-            destroyText.text = "I'm sure";
-            destroyBool = true;
+            AudioManager.Instance.PlaySound(AudioManager.Instance.notificationSound);
+            destroyImage.sprite = binConfirm;
+            destroyIsPending = true;
         }
 
+    }
+
+    private void ResetBin()
+    {
+        destroyImage.sprite = binPending;
+        destroyIsPending = false;
     }
 
 
