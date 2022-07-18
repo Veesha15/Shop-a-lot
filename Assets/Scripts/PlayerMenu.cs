@@ -7,6 +7,7 @@ using TMPro;
 public class PlayerMenu : MonoBehaviour
 {
     private GameManager GM;
+    
 
     [SerializeField] private InventorySlot[] inventorySlots; // change to list + dictionary for more complex inventory system
     [SerializeField] private EquipmentSlot[] equipmentSlots;

@@ -21,13 +21,16 @@ public class InventorySlot : MainSlot
         else
         {
             EquipEvent?.Invoke(this);
-        }   
+        }
+
+        AM.PlaySound(AM.mediumSlotSound);
     }
 
     public override void OtherSlotAction()
     {
         base.OtherSlotAction();
         InfoEvent?.Invoke(this);
+        AM.PlaySound(AM.softSlotSound);
     }
 
 

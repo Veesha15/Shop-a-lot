@@ -3,10 +3,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 // TODO: protected instead of public?
-[RequireComponent(typeof(AudioSource))]
 public class MainSlot : MonoBehaviour, IPointerClickHandler
 {
-    private AudioSource audioSource;
+    protected AudioManager AM;
 
     [Header("Set in Prefab")]
     [SerializeField] private Image itemImage;
@@ -20,15 +19,9 @@ public class MainSlot : MonoBehaviour, IPointerClickHandler
 
     
 
-
-    public void PlaySound() // add to button in inspector 
-    {
-        audioSource.PlayOneShot(buttonClickSound);
-    }
-
     protected virtual void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        AM = FindObjectOfType<AudioManager>();
 
         if (item != null) // TODO: editor script
         {
@@ -43,7 +36,6 @@ public class MainSlot : MonoBehaviour, IPointerClickHandler
         {
             if (item != null)
             {
-                PlaySound();
                 InteractWithSlot();
             }   
         }

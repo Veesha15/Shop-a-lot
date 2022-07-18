@@ -1,18 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class CloseButton : MonoBehaviour
+public class CloseButton : MonoBehaviour // attached to prefab
 {
-    // Start is called before the first frame update
-    void Start()
+    private AudioManager AM;
+
+    private void Awake()
     {
-        
+        AM = FindObjectOfType<AudioManager>();
+        GetComponent<Button>().onClick.AddListener(CloseWindow);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void CloseWindow()
     {
-        
+        transform.parent.gameObject.SetActive(false); // close parent window
+        AM.PlayButtonClick();
     }
+    
+
 }

@@ -1,12 +1,23 @@
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] AudioSource generalAudioSource; // 2nd audio source on Game Manager
+    private AudioSource generalAudioSource;
 
     public AudioClip doorBellSound;
     public AudioClip lightBulbSound;
     public AudioClip buttonClickSound;
+    public AudioClip coinDropSound;
+    public AudioClip softSlotSound;
+    public AudioClip mediumSlotSound;
+    public AudioClip hardSlotSound;
+
+
+    private void Awake()
+    {
+        generalAudioSource = GetComponent<AudioSource>();
+    }
 
 
     public void PlaySound(AudioClip _audioClip) // add to button in inspector 
@@ -14,10 +25,11 @@ public class AudioManager : MonoBehaviour
         generalAudioSource.PlayOneShot(_audioClip);
     }
 
-    public void ButtonClick() // add to button in inspector 
+    public void PlayButtonClick() // add to button in inspector 
     {
         generalAudioSource.PlayOneShot(buttonClickSound);
     }
+
 
 }
 

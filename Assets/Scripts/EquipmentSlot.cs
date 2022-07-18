@@ -14,7 +14,8 @@ public class EquipmentSlot : MainSlot
     public override void InteractWithSlot()
     {
         base.InteractWithSlot();
-        UnequipEvent?.Invoke(this);  
+        UnequipEvent?.Invoke(this);
+        AM.PlaySound(AM.hardSlotSound);
     }
 
 
