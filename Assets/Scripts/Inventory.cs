@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class PlayerMenu : MonoBehaviour
+public class Inventory : MonoBehaviour // attached to Game Manager
 {
     private GameManager GM;
     
@@ -13,22 +11,18 @@ public class PlayerMenu : MonoBehaviour
     [SerializeField] private EquipmentSlot[] equipmentSlots;
     [SerializeField] GameObject playerMenuWindow;
 
-    [SerializeField] RectTransform infoWindow; // rect because we need to set anchor / pivot 
-    private bool infoOpen;
-    private InventorySlot infoedSlot;
-    [SerializeField] TextMeshProUGUI itemName;
-    [SerializeField] TextMeshProUGUI itemFunction;
-    [SerializeField] TextMeshProUGUI itemPrice;
+
+
 
     [SerializeField] GameObject warningWindow;
     [SerializeField] TextMeshProUGUI warningText;
     [SerializeField] Image warningIcon;
     [SerializeField] WarningObject coindWarning, spaceWarning;
-    [SerializeField] TextMeshProUGUI destroyText;
+
 
     [SerializeField] TextMeshProUGUI mouseInfoRightClick;
 
-    private bool destroyBool;
+    
 
     private void OnEnable()
     {
@@ -36,7 +30,6 @@ public class PlayerMenu : MonoBehaviour
         ShopSlot.BuyEvent += BuyItem;
         InventorySlot.SellEvent += SellItem;
         InventorySlot.EquipEvent += EquipItem;
-        InventorySlot.InfoEvent += ToggleInfoWindow;
         Shop.OpenWindowEvent += OpenInventory;
         Shop.CloseWindowEvent += CloseInventory;
     }
@@ -48,7 +41,6 @@ public class PlayerMenu : MonoBehaviour
         ShopSlot.BuyEvent -= BuyItem;
         InventorySlot.SellEvent -= SellItem;
         InventorySlot.EquipEvent -= EquipItem;
-        InventorySlot.InfoEvent -= ToggleInfoWindow;
         Shop.OpenWindowEvent -= OpenInventory;
         Shop.CloseWindowEvent -= CloseInventory;
     }
@@ -110,7 +102,6 @@ public class PlayerMenu : MonoBehaviour
                     _clickedSlot.AddItem(equippedItem);
                 }
 
-                CloseInfo();
                 return;
             }
         }
@@ -135,7 +126,6 @@ public class PlayerMenu : MonoBehaviour
     {
         GM.AddMoney(_clickedSlot.item.sellPrice);
         _clickedSlot.RemoveItem();
-        CloseInfo();
     }
 
 
@@ -170,55 +160,7 @@ public class PlayerMenu : MonoBehaviour
         warningWindow.SetActive(true);
     }
 
-    private void ToggleInfoWindow(InventorySlot _clickedSlot)
-    {
-        if (infoOpen && _clickedSlot == infoedSlot)
-        {
-            CloseInfo();
-        }
 
-        else
-        {
-            infoedSlot = _clickedSlot;
-            infoWindow.anchoredPosition = Vector2.zero; // reset postion other it will use previous position
-            infoWindow.SetParent(_clickedSlot.transform, false);
-            infoWindow.SetParent(playerMenuWindow.transform, true); // need to unparent to display on top of other slots
-
-            itemName.text = _clickedSlot.item.name;
-            itemFunction.text = ($"Wearable: {_clickedSlot.item.equipmentType}");
-            itemPrice.text = _clickedSlot.item.sellPrice.ToString();
-
-            infoWindow.gameObject.SetActive(true);
-            infoOpen = true;
-
-            destroyText.text = "Bin Item";
-            destroyBool = false;
-        }
-    }
-
-    public void DestroyItem()
-    {
-        if (destroyBool)
-        {
-            infoedSlot.RemoveItem();
-            CloseInfo();
-        }
-
-        else
-        {
-            destroyText.text = "I'm sure";
-            destroyBool = true;
-        }
-
-    }
-
-    private void CloseInfo()
-    {
-        infoWindow.gameObject.SetActive(false);
-        infoedSlot = null;
-        destroyText.text = "Bin Item";
-        destroyBool = false;
-    }
 
     public void OpenInventory() 
     {
