@@ -7,6 +7,7 @@ public class Inventory : MonoBehaviour // attached to Game Manager
     private GameManager GM;
     [SerializeField] private GameObject inventoryWindow;
     [SerializeField] private WarningWindow warningWindow;
+    [SerializeField] private Button inventoryButton;
     
     [SerializeField] private InventorySlot[] inventorySlots; // change to list + dictionary for more complex inventory system
     [SerializeField] private EquipmentSlot[] equipmentSlots;
@@ -39,6 +40,7 @@ public class Inventory : MonoBehaviour // attached to Game Manager
     // ***** DEFAULT METHODS *****
     private void Awake()
     {
+        inventoryButton.onClick.AddListener(ToggleInventory);
         GM = FindObjectOfType<GameManager>();
     }
 
@@ -53,12 +55,32 @@ public class Inventory : MonoBehaviour // attached to Game Manager
         }
     }
 
-    private void Test()
+    private void Update()
     {
-        print("test");
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            ToggleInventory();
+        }
     }
 
+
     // ***** CUSTOM METHODS *****
+    private void ToggleInventory()
+    {
+        AudioManager.Instance.PlayButtonClick();
+
+        if (inventoryWindow.activeSelf == false)
+        {
+            OpenInventory();
+        }
+
+        else
+        {
+            CloseInventory();
+        }
+    }
+
+
     public void OpenInventory()
     {
         inventoryWindow.SetActive(true);
@@ -74,10 +96,13 @@ public class Inventory : MonoBehaviour // attached to Game Manager
         }
     }
 
+
     public void CloseInventory()
     {
         inventoryWindow.SetActive(false);
     }
+
+
 
     private int EmptySlotIndex()
     {
@@ -166,12 +191,5 @@ public class Inventory : MonoBehaviour // attached to Game Manager
             warningWindow.DisplayWindow(warningWindow.moneyWarning);
         }
     }
-
-
-
-
-
-
-
 
 }

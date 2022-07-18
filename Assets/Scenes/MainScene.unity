@@ -1162,6 +1162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryWindow: {fileID: 1338864121}
   warningWindow: {fileID: 307760615}
+  inventoryButton: {fileID: 446846208}
   inventorySlots:
   - {fileID: 1082358394}
   - {fileID: 1897043039}
@@ -1688,31 +1689,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 446846209}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1338864121}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: bf018a27d1484ad40a737daa3cc3de6a, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &446846209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9106,9 +9083,9 @@ GameObject:
   - component: {fileID: 1868602089}
   - component: {fileID: 1868602095}
   - component: {fileID: 1868602092}
-  - component: {fileID: 1868602088}
   - component: {fileID: 1868602096}
   - component: {fileID: 1868602097}
+  - component: {fileID: 1868602088}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
