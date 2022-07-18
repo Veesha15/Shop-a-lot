@@ -16,7 +16,7 @@ public class ShopSlot : MainSlot
     {
         base.InteractWithSlot();
         BuyEvent?.Invoke(this);
-        AM.PlaySound(AM.hardSlotSound);
+        AudioManager.Instance.PlaySound(AudioManager.Instance.hardSlotSound);
     }
 
     public void DisplayItem(ItemObject _item)

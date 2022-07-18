@@ -5,8 +5,6 @@ using UnityEngine.UI;
 // TODO: protected instead of public?
 public class MainSlot : MonoBehaviour, IPointerClickHandler
 {
-    protected AudioManager AM;
-
     [Header("Set in Prefab")]
     [SerializeField] private Image itemImage;
     [SerializeField] protected AudioClip buttonClickSound;
@@ -21,8 +19,6 @@ public class MainSlot : MonoBehaviour, IPointerClickHandler
 
     protected virtual void Start()
     {
-        AM = FindObjectOfType<AudioManager>();
-
         if (item != null) // TODO: editor script
         {
             itemImage.sprite = item.icon;

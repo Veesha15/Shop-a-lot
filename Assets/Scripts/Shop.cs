@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour // attached to "building" 
 {
-    private AudioManager AM;
-
     [SerializeField] private GameObject popupWindow;
     [SerializeField] private SpriteRenderer signText;
     [SerializeField] private Sprite enterBright, enterDull, exitBright;
@@ -23,16 +21,11 @@ public class Shop : MonoBehaviour // attached to "building"
     public static event Action CloseWindowEvent;
 
 
-    private void Awake()
-    {
-        AM = FindObjectOfType<AudioManager>();
-    }
-
     private void OnTriggerEnter2D(Collider2D collision) 
     {
         playerInRange = true;
         signText.sprite = enterBright;
-        AM.PlaySound(AM.lightBulbSound);
+        AudioManager.Instance.PlaySound(AudioManager.Instance.lightBulbSound);
     }
 
 
@@ -52,7 +45,7 @@ public class Shop : MonoBehaviour // attached to "building"
             if (!windowIsOpen)
             {
                 OpenWindow();
-                AM.PlaySound(AM.doorBellSound);
+                AudioManager.Instance.PlaySound(AudioManager.Instance.doorBellSound);
             }
 
             else
@@ -84,7 +77,7 @@ public class Shop : MonoBehaviour // attached to "building"
         CloseWindowEvent?.Invoke();
         signText.sprite = enterBright;
         windowIsOpen = false;
-        AM.PlaySound(AM.lightBulbSound);
+        AudioManager.Instance.PlaySound(AudioManager.Instance.lightBulbSound);
     }
 
 

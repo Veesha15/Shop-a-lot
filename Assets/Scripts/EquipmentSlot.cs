@@ -15,7 +15,7 @@ public class EquipmentSlot : MainSlot
     {
         base.InteractWithSlot();
         UnequipEvent?.Invoke(this);
-        AM.PlaySound(AM.hardSlotSound);
+        AudioManager.Instance.PlaySound(AudioManager.Instance.hardSlotSound);
     }
 
 

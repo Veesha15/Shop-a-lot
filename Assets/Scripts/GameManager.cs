@@ -4,8 +4,6 @@ using TMPro;
 
 public class GameManager : MonoBehaviour // attached to empty game object
 {
-    private AudioManager AM;
-
     [SerializeField] TextMeshProUGUI moneyText;
     [SerializeField] Button coinButton; 
 
@@ -16,7 +14,6 @@ public class GameManager : MonoBehaviour // attached to empty game object
     // ***** DEFAULT METHODS *****
     private void Awake()
     {
-        AM = FindObjectOfType<AudioManager>();
         coinButton.onClick.AddListener(AddTestMoney);
     }
 
@@ -44,7 +41,7 @@ public class GameManager : MonoBehaviour // attached to empty game object
     {
         money += 10;
         moneyText.text = money.ToString();
-        AM.PlaySound(AM.coinDropSound);
+        AudioManager.Instance.PlaySound(AudioManager.Instance.coinDropSound);
     }
 
 
