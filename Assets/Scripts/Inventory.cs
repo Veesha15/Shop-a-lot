@@ -5,25 +5,15 @@ using TMPro;
 public class Inventory : MonoBehaviour // attached to Game Manager
 {
     private GameManager GM;
+    [SerializeField] private GameObject inventoryWindow;
+    [SerializeField] private WarningWindow warningWindow;
     
-
     [SerializeField] private InventorySlot[] inventorySlots; // change to list + dictionary for more complex inventory system
     [SerializeField] private EquipmentSlot[] equipmentSlots;
-    [SerializeField] GameObject playerMenuWindow;
 
-
-
-
-    [SerializeField] GameObject warningWindow;
-    [SerializeField] TextMeshProUGUI warningText;
-    [SerializeField] Image warningIcon;
-    [SerializeField] WarningObject coindWarning, spaceWarning;
-
-
-    [SerializeField] TextMeshProUGUI mouseInfoRightClick;
+    [SerializeField] TextMeshProUGUI instructionsRightClick;
 
     
-
     private void OnEnable()
     {
         EquipmentSlot.UnequipEvent += UnequipItem;
@@ -46,11 +36,11 @@ public class Inventory : MonoBehaviour // attached to Game Manager
     }
 
 
+    // ***** DEFAULT METHODS *****
     private void Awake()
     {
         GM = FindObjectOfType<GameManager>();
     }
-
 
     private void Start()
     {
@@ -63,6 +53,31 @@ public class Inventory : MonoBehaviour // attached to Game Manager
         }
     }
 
+    private void Test()
+    {
+        print("test");
+    }
+
+    // ***** CUSTOM METHODS *****
+    public void OpenInventory()
+    {
+        inventoryWindow.SetActive(true);
+
+        if (GameManager.ShopWindowOpen)
+        {
+            instructionsRightClick.text = "buy/\nsell";
+        }
+
+        else
+        {
+            instructionsRightClick.text = "equip/\nunequip";
+        }
+    }
+
+    public void CloseInventory()
+    {
+        inventoryWindow.SetActive(false);
+    }
 
     private int EmptySlotIndex()
     {
@@ -108,7 +123,6 @@ public class Inventory : MonoBehaviour // attached to Game Manager
         
     }
 
-
     private void UnequipItem(EquipmentSlot _clickedSlot)
     {
         int index = EmptySlotIndex();
@@ -143,45 +157,21 @@ public class Inventory : MonoBehaviour // attached to Game Manager
 
             else
             {
-                DisplayWarningWindow(spaceWarning);
+                warningWindow.DisplayWindow(warningWindow.inventoryWarning);
             }
         }
 
         else
         {
-            DisplayWarningWindow(coindWarning);
-        }
-    }
-
-    private void DisplayWarningWindow(WarningObject _object) // window is closed by assigning game object to button
-    {
-        warningText.text = _object.text;
-        warningIcon.sprite = _object.icon;
-        warningWindow.SetActive(true);
-    }
-
-
-
-    public void OpenInventory() 
-    {
-        playerMenuWindow.SetActive(true);
-
-        if (GameManager.ShopWindowOpen)
-        {
-            mouseInfoRightClick.text = "buy/\nsell";
-        }
-
-        else
-        {
-            mouseInfoRightClick.text = "equip/\nunequip";
+            warningWindow.DisplayWindow(warningWindow.moneyWarning);
         }
     }
 
 
-    public void CloseInventory() 
-    {
-        playerMenuWindow.SetActive(false);
-    }
+
+
+
+
 
 
 }

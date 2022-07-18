@@ -976,7 +976,9 @@ GameObject:
   - component: {fileID: 307760612}
   - component: {fileID: 307760613}
   - component: {fileID: 307760611}
+  - component: {fileID: 307760616}
   - component: {fileID: 307760614}
+  - component: {fileID: 307760615}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -1025,7 +1027,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e6bcb04d6e7ef024dbdef2bc6b0929cb, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1129,6 +1131,56 @@ MonoBehaviour:
   destroyButton: {fileID: 1511188155}
   binPending: {fileID: 21300000, guid: 462c14f89f4dd3048acbbc1b907a0934, type: 3}
   binConfirm: {fileID: 21300000, guid: bf352c8502ceffb46b5102496e407ab6, type: 3}
+--- !u!114 &307760615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307760610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2822b8d580dc52446aa8600ae950c53f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  warningWindow: {fileID: 1121614506}
+  warningImage: {fileID: 1188380034}
+  warningText: {fileID: 2111469105}
+  moneyWarning: {fileID: 11400000, guid: 8aa2a9e56f9487f42a72dd830287279d, type: 2}
+  inventoryWarning: {fileID: 11400000, guid: 11cc7a135f4166c4692ffb0c5a4b3741, type: 2}
+--- !u!114 &307760616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307760610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8188ccac108da44ca57d35dbca6fa66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryWindow: {fileID: 1338864121}
+  warningWindow: {fileID: 307760615}
+  inventorySlots:
+  - {fileID: 1082358394}
+  - {fileID: 1897043039}
+  - {fileID: 347628111}
+  - {fileID: 788699826}
+  - {fileID: 1830826962}
+  - {fileID: 1681929794}
+  - {fileID: 1051763100}
+  - {fileID: 1682232466}
+  - {fileID: 2028871930}
+  - {fileID: 695232469}
+  - {fileID: 2111106887}
+  - {fileID: 1683954986}
+  equipmentSlots:
+  - {fileID: 1729519908}
+  - {fileID: 2131063658}
+  - {fileID: 1840487709}
+  - {fileID: 2107221377}
+  instructionsRightClick: {fileID: 182839974}
 --- !u!1001 &344281787
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6143,7 +6195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce91580182df349448dd1b335620cd7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popupWindow: {fileID: 180122737}
+  shopWindow: {fileID: 180122737}
   signText: {fileID: 989752215}
   enterBright: {fileID: 21300000, guid: 9cbf6b10c1266ae45aff5f5d860ab1ab, type: 3}
   enterDull: {fileID: 21300000, guid: 02b7fc317b63f1842a50838e80eba465, type: 3}
@@ -9055,7 +9107,6 @@ GameObject:
   - component: {fileID: 1868602095}
   - component: {fileID: 1868602092}
   - component: {fileID: 1868602088}
-  - component: {fileID: 1868602094}
   - component: {fileID: 1868602096}
   - component: {fileID: 1868602097}
   m_Layer: 0
@@ -9176,43 +9227,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1868602094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1868602087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8188ccac108da44ca57d35dbca6fa66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventorySlots:
-  - {fileID: 1082358394}
-  - {fileID: 1897043039}
-  - {fileID: 347628111}
-  - {fileID: 788699826}
-  - {fileID: 1830826962}
-  - {fileID: 1681929794}
-  - {fileID: 1051763100}
-  - {fileID: 1682232466}
-  - {fileID: 2028871930}
-  - {fileID: 695232469}
-  - {fileID: 2111106887}
-  - {fileID: 1683954986}
-  equipmentSlots:
-  - {fileID: 1729519908}
-  - {fileID: 2131063658}
-  - {fileID: 1840487709}
-  - {fileID: 2107221377}
-  playerMenuWindow: {fileID: 1338864121}
-  warningWindow: {fileID: 1121614506}
-  warningText: {fileID: 2111469105}
-  warningIcon: {fileID: 1188380034}
-  coindWarning: {fileID: 11400000, guid: 8aa2a9e56f9487f42a72dd830287279d, type: 2}
-  spaceWarning: {fileID: 11400000, guid: 11cc7a135f4166c4692ffb0c5a4b3741, type: 2}
-  mouseInfoRightClick: {fileID: 182839974}
 --- !u!61 &1868602095
 BoxCollider2D:
   m_ObjectHideFlags: 0

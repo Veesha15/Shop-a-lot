@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour // attached to "building" 
 {
-    [SerializeField] private GameObject popupWindow;
+    [SerializeField] private GameObject shopWindow;
     [SerializeField] private SpriteRenderer signText;
     [SerializeField] private Sprite enterBright, enterDull, exitBright;
     
@@ -60,7 +60,7 @@ public class Shop : MonoBehaviour // attached to "building"
 
     private void OpenWindow()
     {
-        popupWindow.SetActive(true);
+        shopWindow.SetActive(true);
         GameManager.ShopWindowOpen = true;
         OpenWindowEvent?.Invoke();
         signText.sprite = exitBright;
@@ -72,7 +72,7 @@ public class Shop : MonoBehaviour // attached to "building"
 
     private void CloseWindow()
     {
-        popupWindow.SetActive(false);
+        shopWindow.SetActive(false);
         GameManager.ShopWindowOpen = false;
         CloseWindowEvent?.Invoke();
         signText.sprite = enterBright;

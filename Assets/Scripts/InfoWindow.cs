@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class InventoryInfo : MonoBehaviour // attached to Game Manager
+public class InfoWindow : MonoBehaviour // attached to Game Manager
 {
     [SerializeField] private RectTransform infoWindow; // rect because need to set anchor / pivot 
     [SerializeField] private Transform inventoryWindow;
