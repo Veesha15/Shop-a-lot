@@ -2,23 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SettingsWindow : MonoBehaviour
 {
     [SerializeField] private GameObject settingsWindow;
-
     [SerializeField] private Button settingsButton;
-    [SerializeField] private Button quitButton;
-
+    
     [SerializeField] private Toggle musicToggle;
     [SerializeField] private AudioSource musicSource;
 
     [SerializeField] private Toggle soundToggle;
     [SerializeField] private AudioSource soundSource;
 
+    private bool quitPending;
+    private Image quitImage;
+    [SerializeField] private Button quitButton;
+    [SerializeField] private Sprite defaultQuit, pendingQuit;
 
     private void Awake()
     {
+        quitImage = quitButton.GetComponent<Image>();
         settingsButton.onClick.AddListener(OpenSettingsWindow);
         quitButton.onClick.AddListener(QuitGame);
         musicToggle.onValueChanged.AddListener(delegate { ToggleMusic(musicToggle); });
@@ -29,11 +33,26 @@ public class SettingsWindow : MonoBehaviour
     {
         settingsWindow.SetActive(true);
         AudioManager.Instance.PlayButtonClick();
+        quitPending = false;
+        quitImage.sprite = defaultQuit;
     }
 
     private void QuitGame()
     {
-        Application.Quit();
+        if (quitPending)
+        {
+            AudioManager.Instance.PlayButtonClick();
+            Application.Quit();
+            print("quit");
+        }
+
+        else
+        {
+            AudioManager.Instance.PlaySound(AudioManager.Instance.notificationSound);
+            quitPending = true;
+            quitImage.sprite = pendingQuit;
+        }
+        
     }
 
 
