@@ -9,10 +9,10 @@ public class ItemObject : ScriptableObject
     public Sprite icon;
     public int sellPrice;
     public int buyPrice;
-    public EquipmentType equipmentType;
+    public GarmentType garmentType;
 }
 
-public enum EquipmentType
+public enum GarmentType
 {
     Head,
     Chest,

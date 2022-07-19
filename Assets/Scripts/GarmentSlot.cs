@@ -2,13 +2,13 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 
-public class EquipmentSlot : MainSlot
+public class GarmentSlot : MainSlot
 {
-    [SerializeField] private SpriteRenderer playerDisplay; // used to show equipment on player
-    [SerializeField] private Image potraitDisplay; // used to show equipment on player
-    public EquipmentType equipmentType;
+    [SerializeField] private SpriteRenderer playerDisplay; // used to show garment on player in world
+    [SerializeField] private Image potraitDisplay; // used to show garment on player in inventory
+    public GarmentType garmentType;
 
-    public static event Action<EquipmentSlot> UnequipEvent;
+    public static event Action<GarmentSlot> UnequipEvent;
 
 
     public override void InteractWithSlot()

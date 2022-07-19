@@ -65,7 +65,7 @@ public class InfoWindow : MonoBehaviour // attached to Game Manager
         infoWindow.SetParent(inventoryWindow, true); // need to unparent to display on top of other slots
 
         infoName.text = _clickedSlot.item.name;
-        infoType.text = ($"Wearable: {_clickedSlot.item.equipmentType}");
+        infoType.text = ($"Wearable: {_clickedSlot.item.garmentType}");
         infoPrice.text = _clickedSlot.item.sellPrice.ToString();
 
         infoWindow.gameObject.SetActive(true);

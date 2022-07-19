@@ -11,14 +11,14 @@ public class Inventory : MonoBehaviour // attached to Game Manager
     [SerializeField] private GameObject closeButton;
     
     [SerializeField] private InventorySlot[] inventorySlots; // change to list + dictionary for more complex inventory system
-    [SerializeField] private EquipmentSlot[] equipmentSlots;
+    [SerializeField] private GarmentSlot[] garmentSlots;
 
     [SerializeField] TextMeshProUGUI instructionsRightClick;
 
     
     private void OnEnable()
     {
-        EquipmentSlot.UnequipEvent += UnequipItem;
+        GarmentSlot.UnequipEvent += UnequipItem;
         ShopSlot.BuyEvent += BuyItem;
         InventorySlot.SellEvent += SellItem;
         InventorySlot.EquipEvent += EquipItem;
@@ -29,7 +29,7 @@ public class Inventory : MonoBehaviour // attached to Game Manager
 
     private void OnDisable()
     {
-        EquipmentSlot.UnequipEvent -= UnequipItem;
+        GarmentSlot.UnequipEvent -= UnequipItem;
         ShopSlot.BuyEvent -= BuyItem;
         InventorySlot.SellEvent -= SellItem;
         InventorySlot.EquipEvent -= EquipItem;
@@ -47,7 +47,7 @@ public class Inventory : MonoBehaviour // attached to Game Manager
 
     private void Start()
     {
-        foreach (EquipmentSlot _slot in equipmentSlots)
+        foreach (GarmentSlot _slot in garmentSlots)
         {
             if (_slot.item != null)
             {
@@ -124,14 +124,14 @@ public class Inventory : MonoBehaviour // attached to Game Manager
 
     private void EquipItem(MainSlot _clickedSlot)
     {
-        foreach (EquipmentSlot equipmentSlot in equipmentSlots)
+        foreach (GarmentSlot garmentSlot in garmentSlots)
         {
-            if (equipmentSlot.equipmentType == _clickedSlot.item.equipmentType)
+            if (garmentSlot.garmentType == _clickedSlot.item.garmentType)
             {
-                ItemObject equippedItem = equipmentSlot.item; // if an item is already equipped - swop items
+                ItemObject equippedItem = garmentSlot.item; // if an item is already equipped - swop items
 
-                equipmentSlot.AddItem(_clickedSlot.item);
-                equipmentSlot.EquipPlayer();
+                garmentSlot.AddItem(_clickedSlot.item);
+                garmentSlot.EquipPlayer();
 
                 if (equippedItem == null)
                 {
@@ -149,7 +149,7 @@ public class Inventory : MonoBehaviour // attached to Game Manager
         
     }
 
-    private void UnequipItem(EquipmentSlot _clickedSlot)
+    private void UnequipItem(GarmentSlot _clickedSlot)
     {
         int index = EmptySlotIndex();
 

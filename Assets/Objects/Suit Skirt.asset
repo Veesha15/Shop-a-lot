@@ -15,4 +15,4 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: c9fde38ca35735348b27b5d279aa09c0, type: 3}
   sellPrice: 37
   buyPrice: 39
-  equipmentType: 3
+  garmentType: 3

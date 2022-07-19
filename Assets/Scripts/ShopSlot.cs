@@ -23,7 +23,7 @@ public class ShopSlot : MainSlot
     {
         AddItem(_item);
         itemName.text = item.name;
-        itemFunction.text = ($"Wearable: {item.equipmentType}");
+        itemFunction.text = ($"Wearable: {item.garmentType}");
         itemPrice.text = item.buyPrice.ToString();
     }
 }
