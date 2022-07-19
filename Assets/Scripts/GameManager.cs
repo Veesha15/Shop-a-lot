@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour // attached to empty game object
     private void Start()
     {
         moneyText.text = money.ToString();
-        AddMoney(45);
+        AddMoney(245);
     }
 
 

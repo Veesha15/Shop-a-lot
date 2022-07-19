@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dcbc6ce4b2630184aac8aadd749ea2fc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ad16fd39707524a4ea03b544fe3587aa, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c27df8e3d3269344d844588b0d7f28a1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a277abb05f61dbe4d802220efe6aafa5, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2b254b17c58936e4cb2223ca6538dd85, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 315ae2de0627d174ca485986b0a81d22, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -294,7 +294,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e038ce71c066b7f48b1913922a5e13e9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e555b54f32e94464ea81911f1f0732b1, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 4161931441925588200}
   - component: {fileID: 4161931441925588207}
   m_Layer: 5
-  m_Name: Potrait Figure
+  m_Name: Character Potrait
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
