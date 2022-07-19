@@ -1177,6 +1177,7 @@ GameObject:
   - component: {fileID: 307760617}
   - component: {fileID: 307760614}
   - component: {fileID: 307760615}
+  - component: {fileID: 307760618}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -1394,6 +1395,21 @@ MonoBehaviour:
   inventoryButton: {fileID: 446846208}
   closeButton: {fileID: 544200690}
   instructionsRightClick: {fileID: 182839974}
+--- !u!114 &307760618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307760610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ba13e8f053d49a458262d608cbbecea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingsWindow: {fileID: 1453107294}
+  settingsButton: {fileID: 1482002821}
+  quitButton: {fileID: 55872931}
 --- !u!1001 &344281787
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7481,19 +7497,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1482002822}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1453107294}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1482002822
 MonoBehaviour:
   m_ObjectHideFlags: 0
