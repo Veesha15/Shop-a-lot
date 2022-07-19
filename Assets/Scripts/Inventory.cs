@@ -7,13 +7,13 @@ public class Inventory : MonoBehaviour // attached to Game Manager
     private GameManager GM;
     [SerializeField] private GameObject inventoryWindow;
     [SerializeField] private WarningWindow warningWindow;
-    [SerializeField] private Button inventoryButton;
-    [SerializeField] private GameObject closeButton;
+    
+    
     
     [SerializeField] private InventorySlot[] inventorySlots; // change to list + dictionary for more complex inventory system
     [SerializeField] private GarmentSlot[] garmentSlots;
 
-    [SerializeField] TextMeshProUGUI instructionsRightClick;
+    
 
     
     private void OnEnable()
@@ -22,8 +22,7 @@ public class Inventory : MonoBehaviour // attached to Game Manager
         ShopSlot.BuyEvent += BuyItem;
         InventorySlot.SellEvent += SellItem;
         InventorySlot.EquipEvent += EquipItem;
-        Shop.OpenWindowEvent += OpenInventory;
-        Shop.CloseWindowEvent += CloseInventory;
+
     }
 
 
@@ -33,15 +32,13 @@ public class Inventory : MonoBehaviour // attached to Game Manager
         ShopSlot.BuyEvent -= BuyItem;
         InventorySlot.SellEvent -= SellItem;
         InventorySlot.EquipEvent -= EquipItem;
-        Shop.OpenWindowEvent -= OpenInventory;
-        Shop.CloseWindowEvent -= CloseInventory;
+
     }
 
 
     // ***** DEFAULT METHODS *****
     private void Awake()
     {
-        inventoryButton.onClick.AddListener(ToggleInventory);
         GM = FindObjectOfType<GameManager>();
     }
 
@@ -56,52 +53,11 @@ public class Inventory : MonoBehaviour // attached to Game Manager
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            ToggleInventory();
-        }
-    }
+
 
 
     // ***** CUSTOM METHODS *****
-    private void ToggleInventory()
-    {
-        AudioManager.Instance.PlayButtonClick();
 
-        if (inventoryWindow.activeSelf == false)
-        {
-            OpenInventory();
-        }
-
-        else
-        {
-            CloseInventory();
-        }
-    }
-
-    public void OpenInventory()
-    {
-        if (GameManager.ShopWindowOpen)
-        {
-            instructionsRightClick.text = "buy/\nsell";
-            closeButton.SetActive(false);
-        }
-
-        else
-        {
-            instructionsRightClick.text = "equip/\nunequip";
-            closeButton.SetActive(true);
-        }
-
-        inventoryWindow.SetActive(true);
-    }
-
-    public void CloseInventory()
-    {
-        inventoryWindow.SetActive(false);
-    }
 
 
 

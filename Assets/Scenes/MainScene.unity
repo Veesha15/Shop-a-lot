@@ -1174,6 +1174,7 @@ GameObject:
   - component: {fileID: 307760613}
   - component: {fileID: 307760611}
   - component: {fileID: 307760616}
+  - component: {fileID: 307760617}
   - component: {fileID: 307760614}
   - component: {fileID: 307760615}
   m_Layer: 0
@@ -1359,8 +1360,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryWindow: {fileID: 1338864121}
   warningWindow: {fileID: 307760615}
-  inventoryButton: {fileID: 446846208}
-  closeButton: {fileID: 544200690}
   inventorySlots:
   - {fileID: 1082358394}
   - {fileID: 1897043039}
@@ -1379,6 +1378,21 @@ MonoBehaviour:
   - {fileID: 2131063658}
   - {fileID: 1840487709}
   - {fileID: 2107221377}
+--- !u!114 &307760617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307760610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea579f69af2cbcc4db8e5e7d12f2f3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryWindow: {fileID: 1338864121}
+  inventoryButton: {fileID: 446846208}
+  closeButton: {fileID: 544200690}
   instructionsRightClick: {fileID: 182839974}
 --- !u!1001 &344281787
 PrefabInstance:
