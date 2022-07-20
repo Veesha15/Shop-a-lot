@@ -7011,6 +7011,7 @@ GameObject:
   - component: {fileID: 1333385427}
   - component: {fileID: 1333385430}
   - component: {fileID: 1333385429}
+  - component: {fileID: 1333385431}
   m_Layer: 0
   m_Name: Boutique
   m_TagString: Untagged
@@ -7059,7 +7060,7 @@ SpriteRenderer:
   m_SortingLayerID: 466205393
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 21d37c0930a23d042827ba84653f642e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5504db9d87d1da9429bd3bbf68dd2b7c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7141,6 +7142,7 @@ MonoBehaviour:
   - {fileID: 2113367641}
   - {fileID: 1039643728}
   currentItems: []
+  anim: {fileID: 1333385431}
 --- !u!61 &1333385430
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7167,6 +7169,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2649989, y: 3.3287396}
   m_EdgeRadius: 0
+--- !u!95 &1333385431
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333385426}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ed59348b9985d6643a3fe6dd57cbd587, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1338864121
 GameObject:
   m_ObjectHideFlags: 0

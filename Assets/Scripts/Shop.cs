@@ -15,6 +15,8 @@ public class Shop : MonoBehaviour // attached to "building"
     [SerializeField] private ShopSlot[] shopSlots;
     [SerializeField] private List<ItemObject> currentItems = new List<ItemObject>(); // gets removed from
 
+    [SerializeField] Animator anim;
+
     
     private bool playerInRange;
     private bool windowIsOpen;
@@ -28,6 +30,7 @@ public class Shop : MonoBehaviour // attached to "building"
         playerInRange = true;
         signText.sprite = enterBright;
         AudioManager.Instance.PlaySound(AudioManager.Instance.lightBulbSound);
+        anim.Play("Boutique_Appear");
     }
 
 
@@ -36,7 +39,7 @@ public class Shop : MonoBehaviour // attached to "building"
         CloseWindow();
         playerInRange = false;
         signText.sprite = enterDull; // needs to be after close because close sets it to bright
-        
+        anim.Play("Boutique_Disappear");
     }
 
 
