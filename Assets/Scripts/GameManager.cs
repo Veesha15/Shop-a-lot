@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class GameManager : MonoBehaviour // attached to empty game object
+public class GameManager : MonoBehaviour // attached to empty game object (Game Manager)
 {
     [SerializeField] TextMeshProUGUI moneyText;
     [SerializeField] Button coinButton; 
@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour // attached to empty game object
 
     private void Start()
     {
-        moneyText.text = money.ToString();
         AddMoney(245);
     }
 
@@ -37,7 +36,7 @@ public class GameManager : MonoBehaviour // attached to empty game object
         moneyText.text = money.ToString();
     }
 
-    private void AddTestMoney()
+    private void AddTestMoney() // for testing purposes :)
     {
         money += 10;
         moneyText.text = money.ToString();

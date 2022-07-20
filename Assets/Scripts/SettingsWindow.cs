@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class SettingsWindow : MonoBehaviour
 {
@@ -15,10 +12,10 @@ public class SettingsWindow : MonoBehaviour
     [SerializeField] private Toggle soundToggle;
     [SerializeField] private AudioSource soundSource;
 
-    private bool quitPending;
-    private Image quitImage;
     [SerializeField] private Button quitButton;
     [SerializeField] private Sprite defaultQuit, pendingQuit;
+    private bool quitPending;
+    private Image quitImage;
 
     private void Awake()
     {
@@ -29,6 +26,7 @@ public class SettingsWindow : MonoBehaviour
         soundToggle.onValueChanged.AddListener(delegate { ToggleSound(soundToggle); });
     }
 
+
     private void OpenSettingsWindow()
     {
         settingsWindow.SetActive(true);
@@ -37,13 +35,13 @@ public class SettingsWindow : MonoBehaviour
         quitImage.sprite = defaultQuit;
     }
 
+
     private void QuitGame()
     {
         if (quitPending)
         {
             AudioManager.Instance.PlayButtonClick();
             Application.Quit();
-            print("quit");
         }
 
         else

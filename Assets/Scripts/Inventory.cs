@@ -7,22 +7,17 @@ public class Inventory : MonoBehaviour // attached to Game Manager
     private GameManager GM;
     [SerializeField] private GameObject inventoryWindow;
     [SerializeField] private WarningWindow warningWindow;
-    
-    
-    
+       
     [SerializeField] private InventorySlot[] inventorySlots; // change to list + dictionary for more complex inventory system
     [SerializeField] private GarmentSlot[] garmentSlots;
 
-    
-
-    
+   
     private void OnEnable()
     {
         GarmentSlot.UnequipEvent += UnequipItem;
         ShopSlot.BuyEvent += BuyItem;
         InventorySlot.SellEvent += SellItem;
         InventorySlot.EquipEvent += EquipItem;
-
     }
 
 
@@ -32,7 +27,6 @@ public class Inventory : MonoBehaviour // attached to Game Manager
         ShopSlot.BuyEvent -= BuyItem;
         InventorySlot.SellEvent -= SellItem;
         InventorySlot.EquipEvent -= EquipItem;
-
     }
 
 
@@ -44,7 +38,7 @@ public class Inventory : MonoBehaviour // attached to Game Manager
 
     private void Start()
     {
-        foreach (GarmentSlot _slot in garmentSlots)
+        foreach (GarmentSlot _slot in garmentSlots) //TODO: is for loop still better for gc
         {
             if (_slot.item != null)
             {
@@ -54,16 +48,10 @@ public class Inventory : MonoBehaviour // attached to Game Manager
     }
 
 
-
-
     // ***** CUSTOM METHODS *****
-
-
-
-
-    private int EmptySlotIndex()
+    private int EmptySlotIndex() // TODO: maybe change to bool (slot is empty or not) and out the index?
     {
-        int returnValue = -1;
+        int returnValue = -1; // negative number will indicate no empty slot found
 
         for (int i = 0; i < inventorySlots.Length; i++)
         {
@@ -80,11 +68,11 @@ public class Inventory : MonoBehaviour // attached to Game Manager
 
     private void EquipItem(MainSlot _clickedSlot)
     {
-        foreach (GarmentSlot garmentSlot in garmentSlots)
+        foreach (GarmentSlot garmentSlot in garmentSlots) //TODO: is for loop still better for gc
         {
             if (garmentSlot.garmentType == _clickedSlot.item.garmentType)
             {
-                ItemObject equippedItem = garmentSlot.item; // if an item is already equipped - swop items
+                ItemObject equippedItem = garmentSlot.item; // if an item is already equipped need this reference to swap
 
                 garmentSlot.AddItem(_clickedSlot.item);
                 garmentSlot.EquipPlayer();
@@ -139,7 +127,7 @@ public class Inventory : MonoBehaviour // attached to Game Manager
 
             else
             {
-                warningWindow.DisplayWindow(warningWindow.inventoryWarning);
+                warningWindow.DisplayWindow(warningWindow.inventoryWarning); //TODO: event might work better
             }
         }
 
@@ -148,12 +136,6 @@ public class Inventory : MonoBehaviour // attached to Game Manager
             warningWindow.DisplayWindow(warningWindow.moneyWarning);
         }
     }
-
-
-
-
-
-
 
 
 }

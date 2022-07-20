@@ -23,6 +23,7 @@ public class InventoryWindow : MonoBehaviour
     }
 
 
+    // ***** DEFAULT METHODS *****
     private void Awake()
     {
         inventoryButton.onClick.AddListener(ToggleInventory);
@@ -36,6 +37,8 @@ public class InventoryWindow : MonoBehaviour
         }
     }
 
+
+    // ***** CUSTOM METHODS *****
     private void ToggleInventory()
     {
         AudioManager.Instance.PlayButtonClick();
@@ -50,8 +53,7 @@ public class InventoryWindow : MonoBehaviour
             if (!GameManager.ShopWindowOpen) // prevent inventory being closed when shop window is open
             {
                 CloseInventory();
-            }
-            
+            }   
         }
     }
 

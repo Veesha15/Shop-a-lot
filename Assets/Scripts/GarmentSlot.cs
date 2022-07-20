@@ -31,7 +31,7 @@ public class GarmentSlot : MainSlot
     public void UnequipPlayer()
     {
         playerDisplay.sprite = null; 
-        // sprite renderer doesn't have white block like UI image
+        // sprite renderer doesn't have white block like UI image that needs to be hidden
 
         potraitDisplay.sprite = null;
         potraitDisplay.enabled = false;

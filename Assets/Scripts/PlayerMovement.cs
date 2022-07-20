@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour // attached to player
 {
     [SerializeField] Animator anim;
     [SerializeField] private Transform movePoint; // empty game object that works like a movement tracker
@@ -11,15 +9,32 @@ public class PlayerMovement : MonoBehaviour
     private float moveSpeed = 5;
     private bool atMovePoint = true; // whether the player has reached the move point
 
-    private SortingGroup _sortingGroup; // TODO: add sorting order to stationary objects via code instead of manually 
+    private SortingGroup playerSortingGroup; // TODO: add sorting order to stationary objects via code instead of manually 
 
+
+    // ***** DEFAULT METHODS *****
     void Start()
     {
         movePoint.parent = null;
-        _sortingGroup = GetComponent<SortingGroup>();
+        playerSortingGroup = GetComponent<SortingGroup>();
     }
 
     void Update()
+    {
+        MoveMovePoint();
+        MovePlayer();
+        MoveBehindObjects();
+    }
+
+
+    // ***** CUSTOM METHODS *****
+    private bool HitObstacle()
+    {
+        return Physics2D.OverlapCircle(movePoint.position, 0.2f, obstacle);
+    }
+
+
+    private void MoveMovePoint()
     {
         if (atMovePoint) // if player is at the move point, the move point is able to be moved using the WASD keys
         {
@@ -34,7 +49,11 @@ public class PlayerMovement : MonoBehaviour
                 atMovePoint = false;
             }
         }
+    }
 
+
+    private void MovePlayer()
+    {
         if (!atMovePoint) // if the move point is a certain distance away from the player
         {
             anim.SetBool("IsWalking", true);
@@ -50,14 +69,12 @@ public class PlayerMovement : MonoBehaviour
         {
             movePoint.position = transform.position; // reset move point
         }
-
-        _sortingGroup.sortingOrder = (int)(transform.position.y * -8); // think pivot point of sprite also plays a role in how well formula works
-
     }
 
-    private bool HitObstacle()
+
+    private void MoveBehindObjects()
     {
-        return Physics2D.OverlapCircle(movePoint.position, 0.2f, obstacle);
+        playerSortingGroup.sortingOrder = (int)(transform.position.y * -8); // think pivot point of sprite also plays a role in how well formula works
     }
 
 }

@@ -1404,8 +1404,8 @@ MonoBehaviour:
   infoType: {fileID: 1332355805}
   infoPrice: {fileID: 2004648869}
   destroyButton: {fileID: 1511188155}
-  binPending: {fileID: 21300000, guid: 462c14f89f4dd3048acbbc1b907a0934, type: 3}
-  binConfirm: {fileID: 21300000, guid: bf352c8502ceffb46b5102496e407ab6, type: 3}
+  binDefault: {fileID: 21300000, guid: 462c14f89f4dd3048acbbc1b907a0934, type: 3}
+  binPending: {fileID: 21300000, guid: bf352c8502ceffb46b5102496e407ab6, type: 3}
 --- !u!114 &307760615
 MonoBehaviour:
   m_ObjectHideFlags: 0

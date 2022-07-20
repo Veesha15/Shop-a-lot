@@ -12,14 +12,14 @@ public class InfoWindow : MonoBehaviour // attached to Game Manager
     [SerializeField] TextMeshProUGUI infoPrice;
 
     [SerializeField] Button destroyButton;
+    [SerializeField] Sprite binDefault;
     [SerializeField] Sprite binPending;
-    [SerializeField] Sprite binConfirm;
-    private Image destroyImage;
+    private Image binImage;
 
     private InventorySlot selectedSlot;
 
     private bool infoWindowIsOpen;
-    private bool destroyIsPending;
+    private bool binIsPending;
 
 
     private void OnEnable()
@@ -37,12 +37,15 @@ public class InfoWindow : MonoBehaviour // attached to Game Manager
     }
 
 
+    // ***** DEFAULT METHODS *****
     private void Awake()
     {
         destroyButton.onClick.AddListener(DestroyItem);
-        destroyImage = destroyButton.GetComponent<Image>();
+        binImage = destroyButton.GetComponent<Image>();
     }
 
+
+    // ***** CUSTOM METHODS *****
     private void ToggleInfoWindow(InventorySlot _clickedSlot)
     {
         if (infoWindowIsOpen && _clickedSlot == selectedSlot)
@@ -60,7 +63,7 @@ public class InfoWindow : MonoBehaviour // attached to Game Manager
     private void OpenInfoWindow(InventorySlot _clickedSlot)
     {
         selectedSlot = _clickedSlot;
-        infoWindow.anchoredPosition = Vector2.zero; // reset postion other it will use previous position
+        infoWindow.anchoredPosition = Vector2.zero; // reset postion otherwise it will use previous position
         infoWindow.SetParent(_clickedSlot.transform, false);
         infoWindow.SetParent(inventoryWindow, true); // need to unparent to display on top of other slots
 
@@ -78,13 +81,12 @@ public class InfoWindow : MonoBehaviour // attached to Game Manager
     {
         infoWindow.gameObject.SetActive(false);
         selectedSlot = null;
-        ResetBin();
     }
 
 
-    public void DestroyItem()
+    private void DestroyItem()
     {
-        if (destroyIsPending)
+        if (binIsPending)
         {
             selectedSlot.RemoveItem();
             AudioManager.Instance.PlaySound(AudioManager.Instance.binSound);
@@ -94,16 +96,16 @@ public class InfoWindow : MonoBehaviour // attached to Game Manager
         else
         {
             AudioManager.Instance.PlaySound(AudioManager.Instance.notificationSound);
-            destroyImage.sprite = binConfirm;
-            destroyIsPending = true;
+            binImage.sprite = binPending;
+            binIsPending = true;
         }
 
     }
 
     private void ResetBin()
     {
-        destroyImage.sprite = binPending;
-        destroyIsPending = false;
+        binImage.sprite = binDefault;
+        binIsPending = false;
     }
 
 

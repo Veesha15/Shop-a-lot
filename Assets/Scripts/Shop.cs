@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 // collider is around door only
-
-public class Shop : MonoBehaviour // attached to "building" 
+// collider needs to be on front of collider preventing movement to allow mouse click
+public class Shop : MonoBehaviour // attached to "building" game object
 {
     [SerializeField] private GameObject shopWindow;
     [SerializeField] private SpriteRenderer signText;
@@ -15,9 +14,7 @@ public class Shop : MonoBehaviour // attached to "building"
     [SerializeField] private ShopSlot[] shopSlots;
     [SerializeField] private List<ItemObject> currentItems = new List<ItemObject>(); // gets removed from
 
-    [SerializeField] Animator anim;
-
-    
+    private Animator anim;   
     private bool playerInRange;
     private bool windowIsOpen;
 
@@ -25,18 +22,25 @@ public class Shop : MonoBehaviour // attached to "building"
     public static event Action CloseWindowEvent;
 
 
+    // ***** DEFAULT METHODS *****
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
+
+
     private void OnTriggerEnter2D(Collider2D collision) 
     {
         playerInRange = true;
         signText.sprite = enterBright;
-        AudioManager.Instance.PlaySound(AudioManager.Instance.lightBulbSound);
         anim.Play("Boutique_Appear");
+        AudioManager.Instance.PlaySound(AudioManager.Instance.lightBulbSound);
     }
 
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        CloseWindow();
+        CloseWindow(); // close method plays sound
         playerInRange = false;
         signText.sprite = enterDull; // needs to be after close because close sets it to bright
         anim.Play("Boutique_Disappear");
@@ -49,8 +53,7 @@ public class Shop : MonoBehaviour // attached to "building"
         {
             if (!windowIsOpen)
             {
-                OpenWindow();
-                AudioManager.Instance.PlaySound(AudioManager.Instance.doorBellSound);
+                OpenWindow();   
             }
 
             else
@@ -61,6 +64,7 @@ public class Shop : MonoBehaviour // attached to "building"
     }
 
 
+    // ***** CUSTOM METHODS *****
     private void OpenWindow()
     {
         shopWindow.SetActive(true);
@@ -69,7 +73,7 @@ public class Shop : MonoBehaviour // attached to "building"
         signText.sprite = exitBright;
         DisplayShopItem();
         windowIsOpen = true;
-        
+        AudioManager.Instance.PlaySound(AudioManager.Instance.doorBellSound);
     }
 
 

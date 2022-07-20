@@ -7,8 +7,7 @@ public class MainSlot : MonoBehaviour, IPointerClickHandler
 {
     [Header("Set in Prefab")]
     [SerializeField] private Image itemImage;
-    [SerializeField] protected AudioClip buttonClickSound;
-    /* had an issue with this being assigned in Start
+    /* had an issue with image being assigned in Start
      * other methods (that were dependant) got called before Start
      Start was only called when the slot was set as active * */
 
@@ -16,7 +15,6 @@ public class MainSlot : MonoBehaviour, IPointerClickHandler
     public ItemObject item;
 
     
-
     protected virtual void Start()
     {
         if (item != null) // TODO: editor script
@@ -59,8 +57,7 @@ public class MainSlot : MonoBehaviour, IPointerClickHandler
 
 
     public void AddItem(ItemObject _item)
-    {
-        
+    {    
         item = _item;
         itemImage.sprite = item.icon;
         itemImage.enabled = true;

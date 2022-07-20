@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class AudioManager : MonoBehaviour
+public class AudioManager : MonoBehaviour // attached to prefab
 {
     public static AudioManager Instance { get; private set; }
 
@@ -34,12 +34,12 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    public void PlaySound(AudioClip _audioClip) // add to button in inspector 
+    public void PlaySound(AudioClip _audioClip) // select which audio clip to play
     {
         generalAudioSource.PlayOneShot(_audioClip);
     }
 
-    public void PlayButtonClick() // add to button in inspector 
+    public void PlayButtonClick() // provides consistency for any UI sounds
     {
         generalAudioSource.PlayOneShot(buttonClickSound);
     }
@@ -47,4 +47,4 @@ public class AudioManager : MonoBehaviour
 
 }
 
-// music is setup on first audio source on Game Manager
+// music is setup on Game Manager
