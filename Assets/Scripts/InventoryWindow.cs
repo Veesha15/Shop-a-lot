@@ -47,7 +47,11 @@ public class InventoryWindow : MonoBehaviour
 
         else
         {
-            CloseInventory();
+            if (!GameManager.ShopWindowOpen) // prevent inventory being closed when shop window is open
+            {
+                CloseInventory();
+            }
+            
         }
     }
 
